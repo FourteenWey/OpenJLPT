@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "本地运行的 JLPT N3 词汇快筛工具（React + TypeScript + Vite + IndexedDB）",
+  "description": "本地运行的 JLPT N1–N5 词汇和语法快筛工具（React + TypeScript + Vite + IndexedDB）",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",

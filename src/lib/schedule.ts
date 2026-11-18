@@ -32,6 +32,13 @@ export function newReviewItem(wordId: string, grade: Grade, now: Date = new Date
   }
 }
 
+/** 普通语法练习答错会重新入队，但不计作一次间隔复习。 */
+export function resetGrammarReview(wordId: string, previous: ReviewItem | undefined, now: Date): ReviewItem {
+  return previous ? {
+    ...previous, stage: 0, dueDate: localDate(now), status: 'active', lastGrade: 'C', lapses: previous.lapses + 1,
+  } : newReviewItem(wordId, 'C', now)
+}
+
 /**
  * 记录一次复测。A：进入下一阶段，间隔为两阶段偏移之差（按时完成时恰为第 1/3/7/14 天）；
  * 通过最后阶段后毕业。B 或 C 视为答错：回到阶段 0，当天重新复测。

@@ -1,0 +1,3974 @@
+{
+  "source": {
+    "label": "手机应用「语法题列表」",
+    "package": "shiri.jp",
+    "capturedAt": "2026-11-17"
+  },
+  "levels": {
+    "N5": {
+      "questionCount": 214,
+      "entries": [
+        {
+          "pattern": "〜は〜です",
+          "prompt": "あの人＿＿＿わたしの先生です。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜は〜ではありません",
+          "prompt": "これは教科書＿＿＿ありません。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜は〜でした",
+          "prompt": "むかし、ここ＿＿＿。今はビルがあります。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜は〜ではありませんでした",
+          "prompt": "彼女は学生のとき、会社員＿＿＿ありませんでした。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜は〜だ",
+          "prompt": "あの人＿＿＿田中さんだ。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜は〜ではない",
+          "prompt": "これは私の本＿＿＿ない。友達のだよ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜は〜だった",
+          "prompt": "昔、あそこは学校＿＿＿。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜は〜ではなかった",
+          "prompt": "あの映画はホラー＿＿＿。コメディーだった。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜は〜ですか",
+          "prompt": "これ＿＿＿にほんごのきょうかしょですか。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜は〜でしたか",
+          "prompt": "たなかさんは　むかし　いしゃ　＿＿＿。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "いくつ",
+          "prompt": "テーブルの上にりんごは＿＿＿ありますか。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "いつ",
+          "prompt": "お誕生日は＿＿＿ですか。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "だれ・どなた",
+          "prompt": "先生、今お電話くださったのは＿＿＿でいらっしゃいますか。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "どう・いかが",
+          "prompt": "先生に「お体の調子は＿＿＿ですか」とお聞きしました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "どのぐらい・どれくらい",
+          "prompt": "あなたのうちから学校まで＿＿＿かかりますか。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "なに（何）",
+          "prompt": "このかばんの中に＿＿＿がありますか。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "なん（何）",
+          "prompt": "かばんの中に＿＿＿がありますか。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "なぜ・どうして・なんで",
+          "prompt": "レポートで＿＿＿この問題が起きたのかを説明してください。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜と（並立）",
+          "prompt": "つくえの上にえんぴつ＿＿＿けしゴムがあります。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜や（並立）",
+          "prompt": "週末はえいが＿＿＿おんがくを楽しんでいます。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜か（並立）",
+          "prompt": "りんご＿＿＿みかん、どちらが好きですか。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜も（同類）",
+          "prompt": "田中さんはがくせいです。わたし＿＿＿がくせいです。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜も（強調）",
+          "prompt": "きのう、ゲームを3じかん＿＿＿しました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜（に・へ・で・と・から・まで）は",
+          "prompt": "きょうしつ＿＿＿、にほんごをはなしましょう。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜は〜が",
+          "prompt": "彼女は目＿＿＿きれいです。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜は〜は（対比）",
+          "prompt": "このかばんはやすいです。あのかばん＿＿＿たかいです。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜しか〜ない",
+          "prompt": "冷蔵庫に卵が三つ＿＿＿ありません。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜など",
+          "prompt": "毎朝、パンや卵＿＿＿を食べます。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜が（逆接）",
+          "prompt": "日本語を＿＿＿が、まだじょうずじゃないです。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "でも",
+          "prompt": "昨日は雨でした。＿＿＿、公園に行きました。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ても・〜でも",
+          "prompt": "あの子は小学生＿＿＿、料理がとても上手です。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "けど・けれど・けれども",
+          "prompt": "昨日、かさを＿＿＿けど、雨がふりませんでした。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "しかし",
+          "prompt": "毎日れんしゅうしました。＿＿＿、しあいにまけてしまいました。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "それに",
+          "prompt": "今日は天気がいいです。＿＿＿、風もさわやかですね。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "それとも",
+          "prompt": "コーヒーにしますか、＿＿＿こうちゃにしますか。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "それから",
+          "prompt": "午後、まず宿題をしました。＿＿＿、友だちと公園で遊びました。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "それで",
+          "prompt": "昨日は熱がありました。＿＿＿、学校を休みました。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "ところで",
+          "prompt": "この映画はすごく面白かったですね。＿＿＿、田中さんは最近どうですか。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜すぎる・〜過ぎ",
+          "prompt": "このゲームは＿＿＿すぎて、全然おもしろくありません。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜前",
+          "prompt": "しょくじの＿＿＿に、てをあらいます。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜たち",
+          "prompt": "先生は私＿＿＿に宿題を出しました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ら",
+          "prompt": "子供＿＿＿が庭で遊んでいます。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜中",
+          "prompt": "今、勉強＿＿＿ですから、静かにしてください。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜人",
+          "prompt": "このクラスには三十＿＿＿います。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ずつ",
+          "prompt": "クラスの生徒に教科書を一冊＿＿＿配りました。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜方（かた）",
+          "prompt": "先生に漢字の＿＿＿方を教えてもらいました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜か（終助詞）",
+          "prompt": "すみません、駅はどこ＿＿＿。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ね（終助詞）",
+          "prompt": "今日はいい天気＿＿＿。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜よ（終助詞）",
+          "prompt": "あのレストランはとてもおいしい＿＿＿。ぜひ行ってみてください。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜わ（終助詞）",
+          "prompt": "この絵、本当にすてき＿＿＿。（女の人が感動して言う）",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜かな（終助詞）",
+          "prompt": "あの映画は＿＿＿かな。まだ見ていないんだけど。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜かしら（終助詞）",
+          "prompt": "このカフェのケーキ、＿＿＿かしら。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "とても",
+          "prompt": "きのうのパーティーは＿＿＿たのしかったです。また行きたいです。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "あまり",
+          "prompt": "このえいがは ＿＿＿ おもしろく ありません。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "少し",
+          "prompt": "この部屋は＿＿＿さむいですね。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "全然〜ない",
+          "prompt": "今日はくもっているから、全然＿＿＿。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "ほとんど",
+          "prompt": "パーティーにさそったともだちは＿＿＿きてくれました。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "いつも",
+          "prompt": "毎日＿＿＿同じ時間に起きるので、体の調子がとてもいいです。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "やっと",
+          "prompt": "3時間まって、＿＿＿バスがきました。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "もう",
+          "prompt": "母はもう＿＿＿。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "まだ",
+          "prompt": "ごはんは ＿＿＿ ありますか。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "どうぞ",
+          "prompt": "＿＿＿、お入りください。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "ぜひ",
+          "prompt": "この本はおもしろいですよ。＿＿＿読んでみてください。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "そろそろ",
+          "prompt": "もう九時ですね。＿＿＿失礼します。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜をください",
+          "prompt": "すみません、水＿＿＿ください。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てください",
+          "prompt": "ここでたばこを＿＿＿ください。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ませんか",
+          "prompt": "今度の日曜日、公園へ＿＿＿ませんか。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ましょうか",
+          "prompt": "荷物を＿＿＿ましょうか。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ましょう",
+          "prompt": "さあ、一緒にコーヒーを＿＿＿ましょう。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜だろう・〜でしょう",
+          "prompt": "明日は雨が＿＿＿でしょう。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜たい",
+          "prompt": "私は日本へ＿＿＿たいです。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜がほしい",
+          "prompt": "誕生日に時計＿＿＿ほしいです。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜から（原因）",
+          "prompt": "今日は日曜日＿＿＿から、学校は休みです。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ので",
+          "prompt": "今日は休み＿＿＿ので、どこかへ行きましょう。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜て・〜で（並立・原因）",
+          "prompt": "朝早く起き＿＿＿、散歩をしました。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜から〜まで",
+          "prompt": "会議は十時＿＿＿始まります。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜より",
+          "prompt": "今日は昨日＿＿＿寒いです。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ないで",
+          "prompt": "朝ご飯を＿＿＿で、学校へ行きました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てから",
+          "prompt": "宿題を＿＿＿から、遊びに行きます。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜たり・〜だり",
+          "prompt": "この果物は＿＿＿、甘くなかったりします。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ながら",
+          "prompt": "テレビを＿＿＿、ご飯を食べます。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "これ・それ・あれ・どれ",
+          "prompt": "すみません、＿＿＿はいくらですか。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "この・その・あの・どの",
+          "prompt": "＿＿＿かばんがあなたのですか。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "ここ・そこ・あそこ・どこ",
+          "prompt": "＿＿＿に高い建物がありますね。（遠くを指して）",
+          "questionCount": 2
+        },
+        {
+          "pattern": "こちら・そちら・あちら・どちら",
+          "prompt": "すみません、トイレは＿＿＿ですか。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "こう・そう・ああ・どう",
+          "prompt": "A：明日、雨が降るそうです。B：＿＿＿ですか。じゃ、傘を持っていきます。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "こんな・そんな・あんな・どんな",
+          "prompt": "（手に持っている服を見せて）＿＿＿服を着たいです。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜前に",
+          "prompt": "食事＿＿＿前に、手を洗います。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜後で",
+          "prompt": "仕事＿＿＿後で、飲みに行きましょう。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜とき",
+          "prompt": "家を＿＿＿とき、電気を消してください。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ほうが〜",
+          "prompt": "早く＿＿＿ほうがいいですよ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ほかに",
+          "prompt": "日本語を勉強する＿＿＿、英語も勉強しています。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜と〜とどちらが〜か",
+          "prompt": "コーヒー＿＿＿紅茶とどちらが好きですか。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜で〜が一番〜",
+          "prompt": "家族の中で、父＿＿＿一番背が高いです。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てもいい（ですか）",
+          "prompt": "ここに座＿＿＿もいいですか。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜なくてもいい（ですか）",
+          "prompt": "この本は全部＿＿＿なくてもいいですよ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てはいけない",
+          "prompt": "教室で＿＿＿。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ている",
+          "prompt": "山田さんは毎朝、公園を＿＿＿。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てある",
+          "prompt": "テーブルの上に料理が＿＿＿。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜にする・〜くする",
+          "prompt": "旅行の行き先は沖縄＿＿＿しました。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜になる・〜くなる",
+          "prompt": "山田さんは会社員＿＿＿なりました。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜へ〜に行く／来る／帰る",
+          "prompt": "毎年、家族と旅行＿＿＿行きます。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜と思う",
+          "prompt": "明日は雨が＿＿＿と思います。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜なければならない",
+          "prompt": "薬を＿＿＿なければいけない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜なくてはならない",
+          "prompt": "宿題を今日＿＿＿なくてはいけない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "どうやって",
+          "prompt": "空港まで＿＿＿行きますか。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜なさい",
+          "prompt": "宿題を＿＿＿なさい。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜を",
+          "prompt": "私はりんご＿＿＿食べます。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜に",
+          "prompt": "高橋さんは友達＿＿＿会います。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜で",
+          "prompt": "山田さんはバス＿＿＿会社へ行きます。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜へ",
+          "prompt": "私は駅＿＿＿歩きます。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜の",
+          "prompt": "これは私＿＿＿本です。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜だけ",
+          "prompt": "今日は水＿＿＿飲みました。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ごろ",
+          "prompt": "毎朝七時＿＿＿起きます。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜があります・います",
+          "prompt": "机の上に本が＿＿＿。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ないでください",
+          "prompt": "ここでたばこを＿＿＿。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜が（主語・対象）",
+          "prompt": "田中さんは日本語＿＿＿好きです。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜は〜で〜です",
+          "prompt": "高橋さんは会社員＿＿＿、三十歳です。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "あまり〜ない",
+          "prompt": "今日はあまり＿＿＿。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜たり〜たり",
+          "prompt": "彼の説明は＿＿＿、分かりにくかったりして、要点がつかめない。",
+          "questionCount": 2
+        }
+      ]
+    },
+    "N4": {
+      "questionCount": 297,
+      "entries": [
+        {
+          "pattern": "〜場合",
+          "prompt": "このサービスを利用＿＿＿場合は、事前に登録が必要です。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜そうだ（伝聞）",
+          "prompt": "ニュースによると、その選手は大会で優勝＿＿＿そうです。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜そうだ（様態）",
+          "prompt": "外を見ると、雨が＿＿＿そうです。かさを持っていきましょう。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ようだ（比喩）",
+          "prompt": "まるでここは別の世界＿＿＿。空気がとても澄んでいる。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ようだ（様態）",
+          "prompt": "田中さんはもう食事を＿＿＿ようだ。テーブルがきれいに片付いている。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ように（目的）",
+          "prompt": "先生の声がよく＿＿＿ように、みんな静かにしました。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ように（祈願）",
+          "prompt": "彼女が早く元気に＿＿＿ように、心の中でお祈りしました。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ようになる",
+          "prompt": "日本に来てから、毎日日本語で日記を＿＿＿ようになりました。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ようになっている",
+          "prompt": "この建物では、入る前に必ず手を＿＿＿ようになっています。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ようにする",
+          "prompt": "体のために毎日少し＿＿＿ようにしています。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ようにしている",
+          "prompt": "健康のために、毎日野菜を＿＿＿ようにしています。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜らしい（伝聞）",
+          "prompt": "今年の夏は例年より＿＿＿らしいから、熱中症に気をつけてね。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜らしい（典型）",
+          "prompt": "彼女はどんな問題も一人で解決できて、本当に＿＿＿ですね。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜らしい（推測）",
+          "prompt": "山田さんの新しい家はとても＿＿＿らしいですよ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜みたい（推量）",
+          "prompt": "田中さんは風邪を＿＿＿みたいで、今日は学校を休んでいます。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜みたい（比喩）",
+          "prompt": "彼女は天使＿＿＿笑顔で、みんなを幸せにした。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜みたい（列挙）",
+          "prompt": "彼は野球やサッカー＿＿＿スポーツが得意らしいです。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ておく",
+          "prompt": "旅行の前に、ホテルを＿＿＿おいたほうがいいですよ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ていく",
+          "prompt": "これから気温がどんどん＿＿＿いくでしょう。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てくる",
+          "prompt": "近年、この地域の観光客の数が＿＿＿きています。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜てしまう・〜ちゃう",
+          "prompt": "急いでいたので、駅でスマホを＿＿＿しまいました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てみる",
+          "prompt": "新しいアプリを＿＿＿みましたが、思ったより使いやすかったです。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てやる",
+          "prompt": "庭の花に水を＿＿＿やっている。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てあげる",
+          "prompt": "重そうですね。荷物を＿＿＿あげましょうか。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てもらう",
+          "prompt": "友だちに駅までの道を＿＿＿もらって、やっとたどり着きました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てくれる",
+          "prompt": "妹が洗い物を＿＿＿くれたので、助かりました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てちょうだい",
+          "prompt": "ねえ、ちょっと手を＿＿＿ちょうだい。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜をあげる",
+          "prompt": "私は友達に誕生日カードを＿＿＿。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜をもらう",
+          "prompt": "先生にお土産を＿＿＿、とてもうれしかったです。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜をくれる",
+          "prompt": "昨日、友達が誕生日プレゼントを＿＿＿。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜をやる",
+          "prompt": "ベランダの花に水を＿＿＿のを忘れてしまいました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜やすい",
+          "prompt": "この本は字が大きくて、＿＿＿やすいです。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜にくい",
+          "prompt": "この道は夜になると暗くて、＿＿＿にくいです。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "ちっとも",
+          "prompt": "毎日練習しているのに、テニスがちっとも＿＿＿。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "主に",
+          "prompt": "このアプリのユーザーは＿＿＿20代の若者です。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "必ず",
+          "prompt": "毎日練習を続ければ、＿＿＿上手になれますよ。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "必ずしも",
+          "prompt": "値段が高ければ、必ずしも品質が良いとは＿＿＿。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "なかなか",
+          "prompt": "毎日練習しているのに、＿＿＿上手くならない。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "もし",
+          "prompt": "もしパスワードを＿＿＿、サポートに連絡してください。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "もしくは",
+          "prompt": "この書類は、本人＿＿＿代理人が提出してください。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "または",
+          "prompt": "参加したい場合は、メール＿＿＿電話でご連絡ください。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜過ぎる",
+          "prompt": "昨日のパーティーで＿＿＿過ぎて、お腹が痛くなりました。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜出す",
+          "prompt": "授業中に彼が突然＿＿＿出して、クラス全員がびっくりした。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜続ける",
+          "prompt": "毎日単語を＿＿＿続ければ、必ず上手になりますよ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜始める",
+          "prompt": "彼女は昨日から日本語を＿＿＿始めました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜終わる",
+          "prompt": "宿題を＿＿＿終わったら、ゲームをしてもいいよ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜さ",
+          "prompt": "この荷物の＿＿＿さを量ってから送ってください。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜うちに",
+          "prompt": "赤ちゃんが＿＿＿うちに、急いで夕食の準備をした。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜のうち",
+          "prompt": "クラスの生徒たちの＿＿＿うち、田中さんが一番背が高い。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜まま",
+          "prompt": "子どもの頃＿＿＿まま、この町は何も変わっていない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜つもり",
+          "prompt": "体の調子が悪いので、しばらく運動を＿＿＿つもりです。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜たつもりで",
+          "prompt": "お金がないから、旅行に＿＿＿つもりで、旅行の本を読んでいます。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜はず",
+          "prompt": "新鮮な食材を使っているから、このサラダは＿＿＿はずです。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜はずがない",
+          "prompt": "田中さんはとても正直だから、そんな嘘を＿＿＿はずがない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ため（に）",
+          "prompt": "その地域は交通が＿＿＿ため、生活に不便を感じます。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ところ",
+          "prompt": "友達に電話しようと思って、今まさに番号を＿＿＿ところでした。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜たところ",
+          "prompt": "友だちに電話を＿＿＿ところ、もう家に帰っていました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ているところ",
+          "prompt": "ちょうど宿題を＿＿＿いるところに、友達から電話がかかってきた。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜もの",
+          "prompt": "そんなに緊張しなくていいよ、あなたは本当に上手＿＿＿もん。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜こと",
+          "prompt": "プールに入る前に必ずシャワーを＿＿＿こと。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜のだ・〜んだ",
+          "prompt": "山田さんが転職したのは、前の職場の人間関係が＿＿＿のです。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ばかり",
+          "prompt": "冷蔵庫の中はビール＿＿＿で、他に何も入っていない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜てばかり",
+          "prompt": "彼女は最近、甘いものを＿＿＿ばかりいると、お母さんに怒られた。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜たばかり",
+          "prompt": "さっき昼ご飯を＿＿＿ばかりなので、まだおなかがすいていません。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜のに",
+          "prompt": "この映画はとても＿＿＿のに、友達は全然泣かなかった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜までに",
+          "prompt": "来週の金曜日＿＿＿、レポートを提出してください。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜でも",
+          "prompt": "このゲームは＿＿＿楽しく遊べるように作られています。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜とか",
+          "prompt": "彼は休日にゲームを＿＿＿とか、アニメを見るとかして過ごしています。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜し・〜し〜し",
+          "prompt": "この服は色が＿＿＿し、デザインもいいし、思わず買ってしまいました。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ほど〜ない",
+          "prompt": "東京＿＿＿にぎやかな町は、日本にないと思います。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜と（仮定・条件）",
+          "prompt": "このボタンを＿＿＿と、電気がつきます。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ば",
+          "prompt": "早く＿＿＿、朝ごはんを食べる時間がありますよ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜なら",
+          "prompt": "料理が＿＿＿なら、このアプリで簡単なレシピを調べられますよ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜たら",
+          "prompt": "頭が＿＿＿ら、無理しないで早めに帰ってください。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜か（疑問詞）",
+          "prompt": "かばんの中に財布がない。＿＿＿に落としたかもしれない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜も（疑問詞）",
+          "prompt": "旅行中に財布をなくして、＿＿＿も買えませんでした。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜な",
+          "prompt": "危ないから、そこに＿＿＿な！",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ず（に）",
+          "prompt": "準備を＿＿＿ずに試合に臨むのは、少し無謀だと思う。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜がる",
+          "prompt": "妹はいつも家族と離れることを＿＿＿がって泣きます。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜たがる",
+          "prompt": "田中さんの娘さんは海外に＿＿＿たがっています。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜なくて",
+          "prompt": "この料理は＿＿＿なくて、半分しか食べられませんでした。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ではなく",
+          "prompt": "彼の説明は＿＿＿ではなく、とても分かりやすかった。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ようと思う",
+          "prompt": "最近太ったから、野菜をもっと＿＿＿と思っています。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ようとする",
+          "prompt": "彼はバスに＿＿＿としたが、間に合わなかった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜がする",
+          "prompt": "外で変な音＿＿＿しています。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜という",
+          "prompt": "来週から新しいルールが＿＿＿という話を聞きました。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜という（引用）",
+          "prompt": "このカフェのケーキは＿＿＿と友達が言っていました。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜によると・〜によれば",
+          "prompt": "先生のお話＿＿＿、来週のテストはとても難しいらしい。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜か〜ないか",
+          "prompt": "旅行に＿＿＿か行かないか、家族と話し合っています。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜かどうか",
+          "prompt": "明日の発表会に先生が＿＿＿かどうか、まだ聞いていません。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜だい・〜かい",
+          "prompt": "ねえ、そんなに急いでどこへ行くん＿＿＿？",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜たらどうですか",
+          "prompt": "この問題が分からなければ、先生に＿＿＿どうですか。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜かもしれない・〜かも",
+          "prompt": "このレストランは人気があるから、席が＿＿＿かもしれないよ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜させてください",
+          "prompt": "先生、私が皆さんに自己紹介＿＿＿てください。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てもらえますか",
+          "prompt": "すみません、この荷物を＿＿＿もらえますか。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てくれますか",
+          "prompt": "もう少しゆっくり＿＿＿くれますか。聞き取れませんでした。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ていただけますか",
+          "prompt": "すみません、電話番号を＿＿＿いただけますか。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜たことがある",
+          "prompt": "子どものころ、外国に住んだ＿＿＿があります。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ことがある・〜ないことがある",
+          "prompt": "集中しすぎて、食事の時間を＿＿＿ことがあります。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜必要がある",
+          "prompt": "合格するためには、毎日単語を＿＿＿必要があります。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜予定",
+          "prompt": "午後３時から会議を＿＿＿予定です。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜かわりに",
+          "prompt": "このカフェは値段が＿＿＿かわりに、Wi-Fiが無料で使えます。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "あいにく",
+          "prompt": "お電話いただきましたが、＿＿＿担当者が外出中でございます。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "なるべく",
+          "prompt": "健康のために、＿＿＿野菜を食べるようにしています。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜放題",
+          "prompt": "夏休みは宿題もなく、毎日ゲームを＿＿＿放題でした。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜たいだけ",
+          "prompt": "今日は誰もいないから、＿＿＿たいだけ歌っていいよ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜目",
+          "prompt": "この本を読むのは＿＿＿ですが、読むたびに新しい発見があります。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "できるだけ",
+          "prompt": "試験に合格するために、毎日＿＿＿勉強しています。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "だいたい",
+          "prompt": "この映画はどのくらいの長さですか。＿＿＿2時間の作品です。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "けっこう",
+          "prompt": "この映画は＿＿＿おもしろかったです。想像以上でした。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "かなり",
+          "prompt": "このかばんは見た目よりも＿＿＿重いので、気をつけてください。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "さっき",
+          "prompt": "＿＿＿鈴木さんが来て、あなたのことを探していましたよ。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "しばらく",
+          "prompt": "駅のベンチで＿＿＿待っていたら、やっとバスが来た。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "そのうち",
+          "prompt": "最近は少し体が弱っているけど、＿＿＿元気になるよ。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "いよいよ",
+          "prompt": "夏休みが終わり、＿＿＿新学期が始まります。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "ついに",
+          "prompt": "3年間練習し続けて、＿＿＿ピアノが弾けるようになった。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "はっきり",
+          "prompt": "先生の話し方が速すぎて、何を言っているか＿＿＿わかりませんでした。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "しっかり",
+          "prompt": "大事な書類だから、＿＿＿確認してから送ってください。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "ちゃんと",
+          "prompt": "先生に言われたことは、＿＿＿メモしておきましょう。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "すっかり",
+          "prompt": "昔のクラスメートに会ったが、顔を＿＿＿忘れていた。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "たぶん",
+          "prompt": "明日は＿＿＿晴れるでしょう。でも、天気予報が外れることもありますね。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "きっと",
+          "prompt": "田中さんは毎日一生懸命練習しているから、＿＿＿大会で優勝するでしょう。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "やっぱり・やはり",
+          "prompt": "迷いましたが、＿＿＿この仕事を続けることにしました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "実は",
+          "prompt": "先生、＿＿＿、昨日の宿題を忘れてしまいました。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "特に",
+          "prompt": "週末は＿＿＿予定はありませんが、のんびり過ごすつもりです。",
+          "questionCount": 1
+        }
+      ]
+    },
+    "N3": {
+      "questionCount": 410,
+      "entries": [
+        {
+          "pattern": "〜上がる",
+          "prompt": "この料理の＿＿＿上がりを見て、シェフは満足そうに笑った。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜がかり",
+          "prompt": "彼女の手作りドレスは、一か月＿＿＿でようやく完成した。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜がたい",
+          "prompt": "彼がそんなひどいことをしたなんて、＿＿＿がたい話だ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜きる",
+          "prompt": "冷蔵庫に残っている食材を今日中に＿＿＿きりたい。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜きれる・〜きれない",
+          "prompt": "このスープは量が多すぎて、一人では飲み＿＿＿きれない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜直す",
+          "prompt": "レポートに間違いがあったので、最初から＿＿＿直しました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜向き",
+          "prompt": "この登山コースは急な坂が少なく、山登りが初めての人＿＿＿だと言われている。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜向け",
+          "prompt": "この絵本は小さな子供＿＿＿に作られたものです。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜合う",
+          "prompt": "困ったときは、みんなで＿＿＿合うことが大切です。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜込む",
+          "prompt": "先生の質問が難しくて、彼女はしばらく＿＿＿込んでいた。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜通す",
+          "prompt": "彼女は困難があっても、この仕事を最後まで＿＿＿通した。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜間",
+          "prompt": "妹がピアノを＿＿＿間、私は隣の部屋で勉強した。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜間に",
+          "prompt": "お風呂に＿＿＿間に、電話が来たみたいで着信が残っていた。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜一方（で）",
+          "prompt": "最近は仕事が＿＿＿一方で、趣味を楽しむ時間も大切にしている。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜一方だ",
+          "prompt": "この地域では若者が都市へ出て行き、高齢化が＿＿＿一方だ。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜上",
+          "prompt": "教育＿＿＿の観点から、子供のスマホの使用時間を制限すべきだという意見がある。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜上で（は）",
+          "prompt": "両親に＿＿＿上で、留学するかどうかを決めます。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜上に",
+          "prompt": "昨日は電車が＿＿＿上に、財布も忘れて最悪な一日だった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜うちは",
+          "prompt": "外がまだ＿＿＿うちは、帰り道に気をつけなくてもいいですよ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜最中に",
+          "prompt": "試験＿＿＿最中に、隣の人が咳をし続けていて集中できなかった。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜こと（命令）",
+          "prompt": "授業に遅刻した場合は、担任の先生に必ず＿＿＿こと。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ことか",
+          "prompt": "子どものころ、どんなに＿＿＿ことか、今でも懐かしく思い出す。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ことだ",
+          "prompt": "医者に止められているのだから、お酒を＿＿＿ことだ。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ことに",
+          "prompt": "＿＿＿ことに、初めて参加した大会で優勝することができた。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ことにする",
+          "prompt": "健康のために、夜遅くにお酒を＿＿＿ことにした。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ことになっている",
+          "prompt": "この会社では、毎週月曜日に全員が会議に＿＿＿ことになっています。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ことになる",
+          "prompt": "来月から、新しいプロジェクトチームに＿＿＿ことになった。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ことはない・〜こともない",
+          "prompt": "たった一回断られたからって、＿＿＿ことも ないよ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜とのことだ",
+          "prompt": "報告によると、この地域の水質は現在良好＿＿＿とのことです。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜せいで・〜せいだ",
+          "prompt": "このスープは塩が＿＿＿せいで、とても食べられない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜せいか",
+          "prompt": "彼は話し方が＿＿＿せいか、初対面でも安心感を与える。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜くせに",
+          "prompt": "英語が＿＿＿くせに、ネイティブみたいに話せると思っている。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ものだ",
+          "prompt": "人は誰でも間違いを＿＿＿ものだから、そんなに落ち込まないで。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜たものだ",
+          "prompt": "学生時代は本当に＿＿＿ものだ。でも、あの頃が今では懐かしい。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜わけがない・〜わけはない",
+          "prompt": "あの子は生まれつき耳が聞こえないので、この音楽が＿＿＿わけがない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜わけだ",
+          "prompt": "この映画が世界中で大ヒットしたのも、ストーリーが＿＿＿わけだ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜わけではない・〜わけでもない",
+          "prompt": "毎日＿＿＿わけではないが、週に三回は運動するようにしている。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜わけにはいかない",
+          "prompt": "友達から借りたお金を、このまま返さない＿＿＿わけにはいかない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜とおり・〜どおり",
+          "prompt": "コーチが＿＿＿とおりに体を動かしたら、フォームがよくなった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜つもり（予想外）",
+          "prompt": "彼女は料理が＿＿＿つもりが、実は全部お惣菜を買ってきたらしい。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜おかげで・〜おかげだ",
+          "prompt": "このアパートは家賃が＿＿＿おかげで、毎月貯金できています。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜たび（に）",
+          "prompt": "海外出張＿＿＿たびに、現地の文化に触れることができます。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜おきに",
+          "prompt": "一行＿＿＿空けて書くと、読みやすくなります。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ふりをする",
+          "prompt": "上司に声をかけられたが、田中さんは気が＿＿＿ふりをして、そのまま歩き続けた。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜と（は）反対に",
+          "prompt": "彼女が英語が得意＿＿＿とは反対に、彼は日本語のほうが得意だ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜の話では",
+          "prompt": "田中さん＿＿＿、来週からこのプロジェクトのリーダーが変わるそうだ。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ぶり",
+          "prompt": "田中さんと3年＿＿＿に再会した。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ぶり・っぷり",
+          "prompt": "あの力士の＿＿＿っぷりには、会場が大いに盛り上がった。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜だらけ",
+          "prompt": "彼の答案は間違い＿＿＿で、先生を困らせた。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜の（終助詞）",
+          "prompt": "え、あの子、まだ小学生＿＿＿の？もう背がこんなに高いのに。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜のに（用途）",
+          "prompt": "このアプリは日本語の単語を＿＿＿のにとても役に立ちます。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ば〜のに・〜なら〜のに",
+          "prompt": "もっと早く起き＿＿＿、電車に間に合ったのに。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜には",
+          "prompt": "この試験に合格する＿＿＿には、毎日３時間以上勉強しなければならない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜にて",
+          "prompt": "本セミナーは東京国際フォーラム＿＿＿開催されます。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜さえ",
+          "prompt": "彼はとても疲れていて、立つこと＿＿＿できなかった。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜さえ〜ば",
+          "prompt": "給料さえ＿＿＿、今の仕事を続けるつもりです。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜こそ",
+          "prompt": "去年は失敗したが、今年＿＿＿必ず成功してみせる。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "くらい・ぐらい",
+          "prompt": "このカフェは不思議＿＿＿くらい、いつも空いています。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ほど",
+          "prompt": "山頂に＿＿＿ほど、景色がきれいになっていった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ほど〜ない（最高）",
+          "prompt": "彼女＿＿＿歌が上手い人はいないと思います。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ば〜ほど",
+          "prompt": "新しい技術は複雑で＿＿＿あるほど、習得に時間がかかります。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ばかりだ",
+          "prompt": "最近、視力が＿＿＿ばかりで、眼科に行こうと思っている。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜たきり〜ない",
+          "prompt": "彼は「すぐ戻る」と＿＿＿きり、2時間たっても返ってこない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜だけでなく",
+          "prompt": "この映画は＿＿＿だけでなく、お年寄りにも感動を与えました。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜だけでは",
+          "prompt": "体力＿＿＿、水泳で代表選手になるのは難しい。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜もの・〜もん（終助詞）",
+          "prompt": "だって、明日テストが＿＿＿んだもん、今夜は遊べないよ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜やら〜やら",
+          "prompt": "試験に合格したと聞いて、＿＿＿やら信じられないやら、涙が出てきた。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜たら・〜ったら",
+          "prompt": "もう、お母さん＿＿＿！また人の部屋に勝手に入ってくる！",
+          "questionCount": 2
+        },
+        {
+          "pattern": "数量+は",
+          "prompt": "日本語能力試験N1に合格するためには、一年間＿＿＿しっかり勉強する必要があります。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ないかな",
+          "prompt": "もっとお小遣いが＿＿＿かな。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜だって",
+          "prompt": "電波が良いから、このスマホなら＿＿＿だって通話できる。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜たって・〜だって",
+          "prompt": "どんなに高＿＿＿たって、欲しいものは買ってしまう。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "たとえ〜ても",
+          "prompt": "たとえ＿＿＿でも、このルールは全員が守らなければなりません。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ては",
+          "prompt": "毎日夜遅くまでゲームを＿＿＿ては、成績が上がりませんよ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜っけ",
+          "prompt": "田中さんって、学生のころは＿＿＿っけ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜か何か",
+          "prompt": "プレゼントに＿＿＿か何かを買ってあげたらどうですか。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "自発動詞れる・自発動詞られる",
+          "prompt": "昨日の旅行を振り返ると、楽しかった思い出が次々と＿＿＿れてきた。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜べき",
+          "prompt": "社会人になったら、自分のことは自分で＿＿＿べきだ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ぬ",
+          "prompt": "約束を＿＿＿ぬ人は信頼されない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ねばならぬ・〜ねばならない",
+          "prompt": "環境を守るために、ゴミを正しく＿＿＿ねばならぬ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ようがない・〜ようもない",
+          "prompt": "あの字は汚すぎて、何が書いてあるか＿＿＿ようがない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ように見える",
+          "prompt": "初めて会ったとき、その先生は＿＿＿ように見えた。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "まるで〜のよう",
+          "prompt": "彼女の歌声は、まるで天使＿＿＿よう に美しかった。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜そうにない・〜そうもない",
+          "prompt": "この仕事量では、今日中に＿＿＿そうにない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ずとも",
+          "prompt": "薬は全部＿＿＿ずとも、半分でも十分効果があると医師が説明した。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜だろうか",
+          "prompt": "あの映画はそんなに＿＿＿だろうか、みんなが絶賛している。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜で有名だ",
+          "prompt": "京都は美しい寺や神社＿＿＿有名です。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜恐れがある",
+          "prompt": "台風が近づいており、この地域では大雨が＿＿＿恐れがあります。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜場合じゃない",
+          "prompt": "もう出発の時間だよ！のんびり＿＿＿いる場合じゃない、急いで！",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜んじゃない",
+          "prompt": "ねえ、この問題＿＿＿んじゃない？私には全然わからないけど。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ではないか・〜じゃないか",
+          "prompt": "このケーキ、なんて＿＿＿ではないか。また食べたくなった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜てしかた（が）ない・〜てしようがない・〜てしょうがない",
+          "prompt": "試合が終わってから、おなかが＿＿＿しょうがなかった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜てもしかた（が）ない・〜てもしようがない・〜てもしょうがない",
+          "prompt": "たとえ結果が＿＿＿もしかたがない、次に向けて頑張ろう。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜てよかった・〜なくてよかった",
+          "prompt": "困ったとき、友達に＿＿＿よかった。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ばよかった・〜なければよかった",
+          "prompt": "友達の愚痴を聞いて気分が落ち込んだ。あの話を＿＿＿よかったのに。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ばよかったのに・〜なければよかったのに",
+          "prompt": "雨でびしょ濡れになってしまった。傘を＿＿＿よかったのに。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜たまえ",
+          "prompt": "「このレポートをしっかり＿＿＿たまえ。」と教授は学生に言った。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜からすると・〜からすれば",
+          "prompt": "ベテランの料理人＿＿＿、このレシピは簡単すぎると感じるだろう。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜から見ると・〜から見れば・〜から見て",
+          "prompt": "外国人＿＿＿、日本語の敬語はとても独特なシステムに見えるようだ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜から言うと・〜から言えば・〜から言って",
+          "prompt": "安全性の観点＿＿＿、このルートは避けたほうがいい。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜から〜にかけて",
+          "prompt": "今年の春から夏＿＿＿、降水量が平年より少ない見込みです。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜てもよろしいでしょうか",
+          "prompt": "先生、少し早く＿＿＿もよろしいでしょうか。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜なかったことにする",
+          "prompt": "うっかり秘密を話してしまったが、＿＿＿ことにしよう。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜として",
+          "prompt": "田中さんは代表＿＿＿、会議に出席した。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜にしろ〜にしろ",
+          "prompt": "＿＿＿にしろ食べないにしろ、好き嫌いを言わないほうがいい。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜にせよ〜にせよ",
+          "prompt": "環境が＿＿＿にせよ不便にせよ、目標に向かって努力すべきだ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜にしても〜にしても",
+          "prompt": "この町は＿＿＿にしても不便にしても、自然が豊かなのが魅力だ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜を〜とする・〜を〜として・〜を〜とした",
+          "prompt": "この建物を地域の図書館＿＿＿、市民に無料で開放している。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜に対する・〜に対して",
+          "prompt": "外来種の増加＿＿＿、専門家たちはさまざまな対策を講じている。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜て済む・〜で済む",
+          "prompt": "少し＿＿＿済むと思っていたが、結局病院に行くことになった。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜てたまらない",
+          "prompt": "気になっている人に告白したいのに、緊張して足が＿＿＿たまらない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜てならない",
+          "prompt": "昨日の会議でのあの一言が、ずっと＿＿＿ならない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜てはならない",
+          "prompt": "この施設では大きな声で＿＿＿はならない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜とは・〜というのは",
+          "prompt": "友情（ゆうじょう）＿＿＿、お互（たが）いを信頼（しんらい）し合（あ）うことだと言（い）われています。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ということだ",
+          "prompt": "うわさによると、新しい担任の先生は外国人＿＿＿ということだ。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜というと・〜と言えば・〜といったら",
+          "prompt": "夏＿＿＿、やはりアイスクリームが食べたくなりますね。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜というほどではない・〜というほどでもない",
+          "prompt": "毎日＿＿＿というほどではないが、週に3回はジムに通っている。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜というものは",
+          "prompt": "青春＿＿＿、一度しか経験できないからこそ、輝いて見えるものだ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "（〜や）〜といった",
+          "prompt": "英語やフランス語＿＿＿ヨーロッパの言語は、世界で広く使われている。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜といっても",
+          "prompt": "彼は料理が＿＿＿といっても、作れるのはカレーだけです。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜とされている・〜と見られている",
+          "prompt": "この研究結果は今後の医療に非常に重要＿＿＿とされています。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜に比べて・〜と比べて",
+          "prompt": "去年＿＿＿、今年は物価がずいぶん上がりました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜による・〜により・〜によって",
+          "prompt": "技術の進歩＿＿＿恩恵は、私たちの生活全体に及んでいる。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜にとって",
+          "prompt": "この仕事は彼女＿＿＿とても大切な経験になった。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜につれて",
+          "prompt": "山に＿＿＿につれて、だんだん景色がきれいになっていった。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜を込めて",
+          "prompt": "彼は感謝の気持ち＿＿＿、丁寧な手紙を書いた。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜に関する・〜に関して",
+          "prompt": "地球温暖化＿＿＿、今日の授業で詳しく学びました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜において・〜における",
+          "prompt": "この本は、ビジネス＿＿＿交渉術について詳しく解説している。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜にかわって・〜にかわり",
+          "prompt": "部長が急用で欠席のため、私が部長＿＿＿ご挨拶申し上げます。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜を始め",
+          "prompt": "富士山＿＿＿、日本には世界中から観光客が訪れる名所が数多くある。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜と見える",
+          "prompt": "彼女はその仕事に不満＿＿＿と見える。あまり話したがらない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ても構わない",
+          "prompt": "この資料は＿＿＿も構わないですよ、自由に使ってください。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜させていただく",
+          "prompt": "こちらの会議室を＿＿＿いただいてよろしいでしょうか。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜てごらん",
+          "prompt": "この歌、一度＿＿＿ごらん。きっと気に入るよ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てみせる",
+          "prompt": "絶対にこの試合に＿＿＿みせる。応援していてください。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "つい〜てしまう",
+          "prompt": "来週テストがあるのに、つい友達と夜まで＿＿＿じゃいました。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜て以来",
+          "prompt": "日本に＿＿＿以来、ずっと日本語を勉強し続けています。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜について",
+          "prompt": "今日の会議＿＿＿、事前に資料を準備しておいてください。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜など・〜なんか・〜なんて",
+          "prompt": "弟は「勉強＿＿＿絶対にやらない」と言い張って、母を困らせた。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "なにしろ〜から",
+          "prompt": "なにしろ、明日は大切な発表が＿＿＿から、今日は早めに帰ります。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜てほしい",
+          "prompt": "先生にもっとゆっくり＿＿＿ほしいです。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ならでは",
+          "prompt": "この美術館に展示されている染め物は、この地域の職人＿＿＿伝統技術だ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜やつ",
+          "prompt": "昨日の飲み会で田中が連れてきた＿＿＿、話がめちゃくちゃ面白かった。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜づらい",
+          "prompt": "柄が短くて、このフライパンは＿＿＿づらい。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "一体",
+          "prompt": "＿＿＿誰がこんないたずらをしたんだろう。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "せめて〜",
+          "prompt": "忙しくても、＿＿＿一日一回は連絡してほしい。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "まさか〜",
+          "prompt": "＿＿＿あの元気な鈴木さんが入院するなんて、信じられない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "なんとなく",
+          "prompt": "はっきりした理由はないけど、今日は＿＿＿外出したくない気分だ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜離れ",
+          "prompt": "最近の若者の本＿＿＿が問題になっており、出版業界は大きな打撃を受けている。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜別に",
+          "prompt": "今回の調査結果を年齢＿＿＿まとめてグラフにしてみましょう。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜回る",
+          "prompt": "子どもたちは広い公園を＿＿＿回って、すっかり疲れてしまった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "どうりで",
+          "prompt": "彼女が早退したのは熱があったからだそうだ。＿＿＿ずっとつらそうにしていたわけだ。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜れる・〜られる（自発）",
+          "prompt": "若くして亡くなった彼女の才能が、多くの人に＿＿＿れる。",
+          "questionCount": 3
+        }
+      ]
+    },
+    "N2": {
+      "questionCount": 491,
+      "entries": [
+        {
+          "pattern": "〜限り（限界）",
+          "prompt": "この契約が＿＿＿限り、双方は規定に従う義務があります。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜限り（は）（状態）",
+          "prompt": "二人の関係が＿＿＿限り、どんな困難も乗り越えられると思います。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜限りでは（範囲）",
+          "prompt": "資料を＿＿＿限りでは、その計画に大きな問題はなさそうです。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜に限って",
+          "prompt": "よりによって発表の当日＿＿＿、声が出なくなるとは。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜に限らず",
+          "prompt": "この問題は若者＿＿＿、高齢者にも深刻な影響を与えています。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜に限る",
+          "prompt": "喉が乾いたときは、冷たい水を＿＿＿に限る。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜とは限らない",
+          "prompt": "有名な病院だからといって、すべての医師が＿＿＿とは限らない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ない限り",
+          "prompt": "彼女が夢を諦め＿＿＿限り、周りは全力で応援し続けるだろう。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜次第",
+          "prompt": "新しい住所が＿＿＿次第、ご連絡いたします。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜次第で・〜次第だ",
+          "prompt": "練習量＿＿＿、うまくなれるかどうかが決まる。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜次第では",
+          "prompt": "彼の返答＿＿＿、この計画を白紙に戻すことも考えられます。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜げ",
+          "prompt": "発表の前、山田さんは＿＿＿げな様子で部屋をうろうろしていた。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜気味",
+          "prompt": "最近、少し＿＿＿気味なので、食事に気をつけています。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜っぱなし",
+          "prompt": "電車の中でずっと立ち＿＿＿で、足がとても疲れました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜っぽい",
+          "prompt": "このコートはデザインは好きだけど、素材が＿＿＿っぽくて残念だ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜っこない",
+          "prompt": "こんな難しい問題、私には＿＿＿っこない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜がち",
+          "prompt": "忙しい時期は、メールの返信が＿＿＿がちになってしまう。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜も当然だ",
+          "prompt": "これほど努力を重ねてきたのだから、今回の受賞＿＿＿当然だ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜際（は・に）",
+          "prompt": "＿＿＿際は、フロントデスクにてお手続きをお願いいたします。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜た途端（に）",
+          "prompt": "ベッドに横に＿＿＿途端に、電話が鳴った。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜末（に）",
+          "prompt": "長い間＿＿＿末に、ようやく進学先を決めることができた。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜あげく",
+          "prompt": "彼女はさんざん＿＿＿あげく、留学をやめることにした。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜上は",
+          "prompt": "海外に＿＿＿上は、現地の文化や言語を積極的に学ぶ覚悟が必要だ。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜以上（は）",
+          "prompt": "試験を＿＿＿以上は、最後まで諦めずに頑張るつもりです。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜反面・〜半面",
+          "prompt": "山田さんはおしゃべりが＿＿＿反面、じっくり話を聞くのが苦手らしい。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜契機",
+          "prompt": "この事件を契機＿＿＿、社会全体のセキュリティ意識が高まった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜かいがある・〜かいがない",
+          "prompt": "半年間＿＿＿かいがありました。ついにN2の試験に合格しました。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜きっかけ",
+          "prompt": "転職＿＿＿、田舎に引っ越して生活スタイルを見直すことにした。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜まま（に）",
+          "prompt": "先生に言われ＿＿＿まま、毎日日記をつけることにした。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜まま（に）（受け身形）",
+          "prompt": "彼女は周りに＿＿＿まま、やりたくもない習い事を続けた。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜どころか",
+          "prompt": "このホテルは値段が＿＿＿どころか、サービスまで最悪だった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ところだった",
+          "prompt": "足元がぬれていて、＿＿＿ところだった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜どころではない",
+          "prompt": "子供が夜泣きをして、ゆっくり＿＿＿いるどころではない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ところに・〜ところへ",
+          "prompt": "今から＿＿＿ところに、母から電話がかかってきました。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ところを",
+          "prompt": "試験中にカンニングを＿＿＿ところを先生に見られてしまった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜たところが",
+          "prompt": "久しぶりに彼に連絡を＿＿＿ところが、もう別の会社に転職していた。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜たところで",
+          "prompt": "今さら謝っ＿＿＿ところで、彼女は許してくれないだろう。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜つつ",
+          "prompt": "お金がないと＿＿＿つつも、新しいゲームを買ってしまった。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜つつある",
+          "prompt": "地球の平均気温は年々＿＿＿つつある。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ついでに",
+          "prompt": "スーパーに＿＿＿ついでに、クリーニング店に洗濯物を預けてきた。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜あまり（に）",
+          "prompt": "初めての一人暮らしで＿＿＿あまり、毎晩親に電話してしまった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜きり",
+          "prompt": "このチャンスは一生に一度＿＿＿だ。絶対に逃すな。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜からには",
+          "prompt": "彼女が優秀＿＿＿からには、このプロジェクトを任せても安心だ。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ながら（も）",
+          "prompt": "田舎の生活は＿＿＿ながらも、自然に囲まれていて心地よい。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ばかりか",
+          "prompt": "田中さんは英語を＿＿＿ばかりか、フランス語まで話せる。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ばかりに",
+          "prompt": "あのバッグが＿＿＿ばかりに、貯金を全部使い果たしてしまった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜てばかりはいられない",
+          "prompt": "もう社会人なんだから、親に＿＿＿ばかりもいられないよ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜たいばかりに",
+          "prompt": "彼女に＿＿＿たいばかりに、わざわざ遠い駅まで迎えに行った。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ものの",
+          "prompt": "試験に＿＿＿ものの、思っていたより点数が低くてがっかりした。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜も〜ば〜も",
+          "prompt": "あの学校は設備も設備＿＿＿、教師陣も優秀で有名だ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜たて",
+          "prompt": "＿＿＿たてのご飯はやっぱり一番おいしい。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜まい・〜まいか",
+          "prompt": "思い切って留学でも＿＿＿まいかと最近ずっと考えている。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ではあるまいか",
+          "prompt": "その問題の根本を解決するのは、見た目よりも遥かに＿＿＿ではあるまいか。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ようで",
+          "prompt": "天気予報によると、明日は雪が＿＿＿ようで、外出の予定を変えた。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ようでは",
+          "prompt": "ちゃんと復習し＿＿＿ようでは、テストでいい点は取れないよ。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ようなら・〜ようだったら・〜ようであれば",
+          "prompt": "試験の内容が＿＿＿ようだったら、遠慮なく質問してください。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜かのよう",
+          "prompt": "あの子供はまるで全てのことを＿＿＿かのような目で私を見つめた。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜からいいようなものの",
+          "prompt": "試験に＿＿＿からいいようなものの、準備が足りなかったと反省している。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜以来",
+          "prompt": "あの事故＿＿＿、彼は自転車にも乗れなくなりました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜折りに",
+          "prompt": "海外へ＿＿＿折りに、現地でしか手に入らないものを探すのが趣味です。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜もしない",
+          "prompt": "彼はひと言も＿＿＿もしないで、さっさと帰ってしまった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "あまりの〜",
+          "prompt": "本番前のあまりの＿＿＿に、足がふるえて立っていられなかった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜を頼りに",
+          "prompt": "彼女はわずかな記憶＿＿＿、故郷の道を歩き続けた。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ものか・〜もんか",
+          "prompt": "少し叱られたくらいで、そんなに＿＿＿ものか。もっと気楽に考えろ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜も〜なら〜も〜だ",
+          "prompt": "上司も上司＿＿＿、部下も部下だ。あの職場は全体的に問題がある。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ものがある",
+          "prompt": "あの小説には、読む人の心を＿＿＿ものがある。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ものだから",
+          "prompt": "電車が急に＿＿＿ものだから、約束の時間に遅れてしまいました。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ものではない",
+          "prompt": "試験中に隣の人の答えを＿＿＿ものではない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ものなら・〜もんなら（可能）",
+          "prompt": "もう一度あの試合を＿＿＿ものなら、今度こそ全力を尽くしたい。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ものなら（意向）",
+          "prompt": "彼女の秘密を誰かに＿＿＿ものなら、二度と許してもらえないだろう。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜というものだ",
+          "prompt": "どんな困難があっても諦めずに挑戦し＿＿＿というものだ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜というものではない",
+          "prompt": "値段が高いレストランだから、料理が＿＿＿というものではない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜わりに",
+          "prompt": "彼はベテランの料理人＿＿＿わりに、盛り付けがあまり上手ではない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ことから",
+          "prompt": "この図書館は館内が常に＿＿＿ことから、集中して勉強したい学生に人気だ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ことだから",
+          "prompt": "時間にルーズな彼＿＿＿ことだから、今日も遅刻するに違いない。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ことなく",
+          "prompt": "彼女は一度も休む＿＿＿、マラソンを完走した。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ことにはならない",
+          "prompt": "書類にサインしただけでは、条件に＿＿＿ことにはならない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ことは〜が",
+          "prompt": "彼女は料理が＿＿＿ことは上手だが、片付けはいつも後回しにする。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ないことには",
+          "prompt": "実際に＿＿＿ことには、自分に合っているかどうかわからない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ないことはない・〜ないこともない",
+          "prompt": "この計画は難しそうに見えるが、準備をすれば＿＿＿ことはない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ごとに",
+          "prompt": "このバスは15分＿＿＿1本来るので、待ち時間はそれほど長くない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜からこそ",
+          "prompt": "彼女はこの分野の第一人者＿＿＿こそ、こんな深い洞察ができるのだ。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜からして",
+          "prompt": "この店は、入り口の雰囲気＿＿＿、相当高級なのがわかる。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜からといって",
+          "prompt": "先生＿＿＿からといって、何でも知っているわけではない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜までして・〜てまで",
+          "prompt": "夢を叶えるために、＿＿＿まで して毎日仕事に励んだ。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜というより",
+          "prompt": "彼女の歌声は上手＿＿＿というより、聴く人の心を揺さぶる力があると思う。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜てでも",
+          "prompt": "徹夜＿＿＿でも、このレポートを明日までに終わらせる。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜とか・〜とかいう",
+          "prompt": "先週、山田さんが急に会社を＿＿＿とかいう話を聞いた。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜を中心に",
+          "prompt": "この美術館は現代アート＿＿＿、様々な展示を企画しています。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜をもとに",
+          "prompt": "古い言い伝え＿＿＿、作家が魅力的な小説を書き上げた。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜は別として",
+          "prompt": "彼の才能＿＿＿別として、努力する姿勢はとても素晴らしいと思います。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜をかねて",
+          "prompt": "出張＿＿＿、京都の観光地も回ってきました。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜を通じて・〜を通して",
+          "prompt": "彼女は厳しいトレーニング＿＿＿、世界レベルの選手へと成長した。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜を問わず・〜は問わず",
+          "prompt": "この大会は年齢＿＿＿問わず、どなたでも参加できます。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜を除いて・〜を除き",
+          "prompt": "緊急の場合を＿＿＿、会議中の携帯電話の使用はご遠慮ください。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜をめぐって・〜をめぐり",
+          "prompt": "新しい法律＿＿＿、各党の間で激しい議論が行われた。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜も構わず",
+          "prompt": "彼女は恥＿＿＿構わず、大勢の前で自分の失敗談を話してくれた。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜抜きで・〜抜きに・〜を抜きにして・〜は抜きにして",
+          "prompt": "今日は時間がないので、お風呂＿＿＿そのまま寝ます。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜抜きでは・〜抜きには・〜を抜きにしては",
+          "prompt": "彼の意見＿＿＿抜きにしては、この問題を解決することはできない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜抜く",
+          "prompt": "彼はどんなに苦しくても、最後まで走り＿＿＿抜きました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜に関わる",
+          "prompt": "これは患者の命に＿＿＿問題なので、絶対に見逃してはいけない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜にも関わらず",
+          "prompt": "昨日、雨が＿＿＿にもかかわらず、彼らは試合をやめなかった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜に関わりなく",
+          "prompt": "彼が会議に＿＿＿かどうかに関わりなく、計画は予定通りに進めます。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜に基づいて・〜に基づき",
+          "prompt": "この研究は最新のデータ＿＿＿進められた。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜にわたって・〜にわたり",
+          "prompt": "その研究は複数の専門分野＿＿＿成果をもたらした。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜に沿って・〜に沿い",
+          "prompt": "海＿＿＿道路には、夕日がきれいに見えるスポットがたくさんある。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜につき",
+          "prompt": "ただいまシステムメンテナンス＿＿＿、サービスをご利用いただけません。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜に加えて・〜に加え",
+          "prompt": "彼女は英語＿＿＿フランス語も話せます。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜に応えて・〜に応え",
+          "prompt": "ファンの期待＿＿＿、チームは見事な逆転勝利を収めた。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜に際して・〜に際し",
+          "prompt": "新しいシステムを＿＿＿に際して、スタッフ全員に研修が実施された。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜に先立って・〜に先立ち",
+          "prompt": "卒業式に＿＿＿、学生たちは会場の設営と最終リハーサルを済ませた。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜に従って・〜に従い",
+          "prompt": "山を＿＿＿に従って、気温がどんどん下がっていった。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜にしたら・〜にすれば",
+          "prompt": "経験豊富な医師＿＿＿、この症状は一目でわかるものだと言える。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜にしては",
+          "prompt": "彼女は＿＿＿にしては、日本語の敬語の使い方がとても自然だ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜にしろ・〜にせよ・〜にしても",
+          "prompt": "彼の対応が＿＿＿にしても、感情的に怒り返すことはよくない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜にあたって・〜にあたり",
+          "prompt": "プロジェクトの＿＿＿にあたり、関係者全員で目標を共有した。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜に応じて（は）・〜に応じ",
+          "prompt": "サービスの内容はお客様のご要望＿＿＿、柔軟に対応いたします。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てはじめて",
+          "prompt": "海外で一人で生活を＿＿＿はじめて、家族の大切さに気づきました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜かと思うと・〜かと思ったら",
+          "prompt": "赤ちゃんがやっと＿＿＿かと思ったら、すぐ目を覚ました。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ずに済む・〜ないで済む・〜なくて済む",
+          "prompt": "友達が助けてくれたので、一人でやら＿＿＿て済みました。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ずにはいられない・〜ないではいられない",
+          "prompt": "あの映画のラストシーンを見て、＿＿＿ずにはいられなかった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜にかけては・〜にかけても",
+          "prompt": "彼女はピアノ＿＿＿、プロにも負けないほどの腕前だ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜に決まっている",
+          "prompt": "毎晩あんなにゲームをしていたら、試験に＿＿＿に決まっている。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜に伴って・〜に伴い",
+          "prompt": "テクノロジーが＿＿＿に伴い、私たちの生活スタイルも大きく変化した。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜に反して・〜に反し",
+          "prompt": "父の意向＿＿＿、彼は故郷に残らず都会へ旅立った。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜につけ・〜につけては・〜につけても",
+          "prompt": "先生の＿＿＿につけ、もっと頑張ろうという気持ちになります。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜にほかならない",
+          "prompt": "この結果は、皆さんの協力のおかげ＿＿＿。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ほかない・〜よりほかない・〜ほかしかたがない",
+          "prompt": "終電に乗り遅れてしまったから、タクシーで＿＿＿よりほかない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜得る・〜得ない",
+          "prompt": "あの誠実な彼が人をだますなど、とても＿＿＿得ない話だ。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜かけ・〜かける",
+          "prompt": "夕食を＿＿＿かけたとき、急に電話が鳴った。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜かねる",
+          "prompt": "お客様のご要望には、お応え＿＿＿かねますので、ご了承ください。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜に過ぎない",
+          "prompt": "彼はプロと言っても、まだ＿＿＿に過ぎない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜に相違ない",
+          "prompt": "目撃者の証言によれば、彼が事件当日その場に＿＿＿に相違ない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜に違いない",
+          "prompt": "このかばんは有名なブランドのものだから、かなり＿＿＿に違いない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜か〜ないかのうちに",
+          "prompt": "試合が始まるか＿＿＿かのうちに、スタジアム全体が歓声に包まれた。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜かというと・〜かといえば（否定）",
+          "prompt": "先生に相談すれば必ず問題が＿＿＿かというと、そうとは限らない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜かというと・〜かといえば",
+          "prompt": "なぜ毎朝早く＿＿＿かというと、一人で静かに読書できるからです。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ではないか・〜じゃないか（意向）",
+          "prompt": "今日は天気もいいし、公園を＿＿＿ではないか。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ざるを得ない",
+          "prompt": "台風の影響で、イベントの開催日程を＿＿＿ざるを得なくなった。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ほしいばかりに",
+          "prompt": "彼はその役職が＿＿＿、上司に媚びを売り続けた。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜のみならず",
+          "prompt": "彼はスポーツを＿＿＿のみならず、音楽にも情熱を注いでいる。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜だけあって・〜だけに・〜だけのことはある",
+          "prompt": "このワインは値段が＿＿＿だけのことはある。香りも味も格別だ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜てからでないと・〜てからでなければ",
+          "prompt": "上司に＿＿＿からでなければ、このプロジェクトは進められません。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てはいられない",
+          "prompt": "社長に急に呼ばれたから、ここでずっと＿＿＿はいられない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜では済まされない",
+          "prompt": "この重大な事故は、口頭での謝罪＿＿＿済まされないと調査委員会は結論づけた。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜といっても過言ではない",
+          "prompt": "彼女のビジネスセンスは天才的＿＿＿といっても過言ではない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜とかで",
+          "prompt": "田中さんは来月退職＿＿＿とかで、最近引き継ぎに追われているらしい。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜としか言いようがない",
+          "prompt": "彼女のスピーチは会場全体を感動させ＿＿＿としか言いようがない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜とともに",
+          "prompt": "社会が高齢化する＿＿＿、介護サービスの需要も増加している。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜かねない",
+          "prompt": "毎日遅刻していると、クビに＿＿＿かねない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜なくはない・〜なくもない",
+          "prompt": "駅から少し離れているが、住むには＿＿＿なくはない環境だと思う。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ならともかく",
+          "prompt": "もう少し＿＿＿ならともかく、この部屋の家賃は私には高すぎます。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜のもとで",
+          "prompt": "ベテランコーチ＿＿＿、チームは着実に実力をつけていった。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜のもとに",
+          "prompt": "厳格な管理＿＿＿、この実験は安全に行われた。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜の名のもとに",
+          "prompt": "彼らは自由＿＿＿、他者の権利を侵害した。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜はともかく（として）",
+          "prompt": "英語＿＿＿、まず日本語をしっかり勉強することが先決だ。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜はもちろん・〜はもとより",
+          "prompt": "田中教授の研究は専門家は＿＿＿、一般の読者にも広く読まれている。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜くらいなら",
+          "prompt": "あの人に頭を＿＿＿くらいなら、自分でやった方がましだ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜まだしも",
+          "prompt": "一度＿＿＿なら まだしも、毎回同じミスをくり返すのは問題だ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "とても〜ない",
+          "prompt": "彼女がそんなひどいことを言うなんて、とても＿＿＿。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜まくる",
+          "prompt": "彼はマラソンで最後まで＿＿＿まくった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜にかけても",
+          "prompt": "彼は自分の名誉＿＿＿、その汚職事件を最後まで追い続けると宣言した。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜並み",
+          "prompt": "彼女の日本語力はネイティブ＿＿＿で、通訳としても活躍している。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "あっという間",
+          "prompt": "楽しい会話をしていたら、3時間が＿＿＿過ぎてしまいました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "いまいち",
+          "prompt": "あのカフェは雰囲気はいいのに、コーヒーの味が＿＿＿で、リピートする気になれない。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "一旦〜と",
+          "prompt": "一旦この薬を＿＿＿と、副作用が出る可能性があるので、医師に相談してください。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜うちに入らない",
+          "prompt": "少し歩いたくらいでは＿＿＿うちに入らないよ、もっと体を動かさないと。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜思いをする",
+          "prompt": "入学したばかりのころ、クラスに馴染めなくて、＿＿＿思いをした。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "限りなく〜近い",
+          "prompt": "彼女が描いた富士山の絵は、本物の写真＿＿＿限りなく近い美しさだった。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜からなる",
+          "prompt": "人間の体は約60兆個の細胞＿＿＿と言われている。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜心地",
+          "prompt": "この電車の座席は＿＿＿心地がよくて、つい眠ってしまった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ことこの上ない",
+          "prompt": "このような名誉ある賞をいただけるとは、＿＿＿ことこの上ない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜こなす",
+          "prompt": "田中さんはあの複雑なソフトウェアを完全に＿＿＿こなしている。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ず〜ず",
+          "prompt": "彼女の話し方は派手からず＿＿＿からず、とても聞きやすかった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜たつもりだ",
+          "prompt": "説明書をよく＿＿＿つもりだったのに、手順を間違えてしまった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜た分だけ",
+          "prompt": "今月はたくさん働いた。＿＿＿分だけ、給料も増えるはずだ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てもみないで",
+          "prompt": "彼女の手料理を＿＿＿もみないで、まずいと言うのはひどいんじゃないかな。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "できる限り",
+          "prompt": "体に悪いものは、＿＿＿食べないようにしています。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "二度と〜ない",
+          "prompt": "あんなひどい扱いを受けたのだから、あの店には二度と＿＿＿。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜は抜きにして",
+          "prompt": "冗談＿＿＿、今日は真剣な話があります。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ぽっち",
+          "prompt": "友達に1万円貸したのに、返してきたのは千円＿＿＿だった。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "わけがわからない",
+          "prompt": "彼の説明が長くて専門的すぎて、何を言いたいのか＿＿＿。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜め",
+          "prompt": "発表の準備は余裕を持ちたいので、資料は＿＿＿めに印刷しておいた。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜に限り",
+          "prompt": "本日＿＿＿、全商品を半額にてご提供いたします。",
+          "questionCount": 1
+        }
+      ]
+    },
+    "N1": {
+      "questionCount": 517,
+      "entries": [
+        {
+          "pattern": "〜（よ）うが・〜（よ）うと",
+          "prompt": "どんなに美味しいものを＿＿＿うと、食べ過ぎは体に悪い。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜（よ）うが〜（よ）うが・〜（よ）うと〜（よ）うと",
+          "prompt": "結果が成功しようと＿＿＿と、挑戦したこと自体に価値がある。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜（よ）うが〜まいが・（よ）うと〜まいと",
+          "prompt": "周囲が＿＿＿反対するまいが、彼女は自分の信念を貫き通した。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜（よ）うとも・〜くとも",
+          "prompt": "どんなに周りから＿＿＿とも、彼女は留学の夢を諦めなかった。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜（よ）うにも〜ない",
+          "prompt": "財布を忘れてしまって、電車に＿＿＿にも乗れなかった。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜限りだ",
+          "prompt": "多大なご迷惑をおかけしてしまったことは、＿＿＿限りでございます。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜が最後・〜たら最後",
+          "prompt": "彼女に一度＿＿＿が最後、毎日のように連絡が来るようになる。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜か否か",
+          "prompt": "その判断が＿＿＿か否かは、後になってみなければわからない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜嫌いがある",
+          "prompt": "彼はどうも物事を悲観的に＿＿＿嫌いがある。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜が早いか",
+          "prompt": "ベルが＿＿＿が早いか、生徒たちは一斉に教室を飛び出した。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜極まる・〜極まりない",
+          "prompt": "このような＿＿＿極まりない行為は、絶対に許すことができない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜始末だ",
+          "prompt": "謝れば済むものを、言い訳ばかりして上司を怒鳴りつける＿＿＿始末だ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ずくめ",
+          "prompt": "今日は試験に合格して、内定ももらって、いいこと＿＿＿の一日だった。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜術がない",
+          "prompt": "容疑者はすでに国外へ逃亡しており、真相を＿＿＿術がない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜であれ・〜であろうと",
+          "prompt": "専門家＿＿＿素人であれ、この問題の深刻さを正しく理解すべきだ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜であれ〜であれ",
+          "prompt": "子供であれ大人＿＿＿、ルールを守る義務がある。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜であろうと〜であろうと",
+          "prompt": "先生＿＿＿学生であろうと、知識を学び続ける姿勢は生涯大切にすべきだ。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜つ〜つ",
+          "prompt": "彼は発表の前、廊下を＿＿＿つ戻りつしながら緊張した様子だった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜だろうが〜だろうが",
+          "prompt": "成功＿＿＿失敗だろうが、最後までやり遂げる覚悟です。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜たりとも",
+          "prompt": "部長は会議の内容を一言＿＿＿聞き漏らすまいと必死だった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ても差し支えない",
+          "prompt": "提出資料のフォーマットは＿＿＿でも差し支えない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ても始まらない",
+          "prompt": "今さら後悔＿＿＿も始まらない、これからのことを考えよう。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てやまない",
+          "prompt": "彼女の才能が今後さらに開花することを願っ＿＿＿やまない。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜と（が）相まって・〜も相まって",
+          "prompt": "美しい自然の景観と快適な気候＿＿＿、この地域は国内有数の観光地として人気を博している。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜あっての",
+          "prompt": "患者＿＿＿医療という理念を、この病院は大切にしている。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜とあって",
+          "prompt": "その食材は国内では入手が＿＿＿とあって、専門店でも取り扱いが少ない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜とあっては",
+          "prompt": "海外赴任を一人で＿＿＿とあっては、語学の勉強を始めるしかない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜とあれば",
+          "prompt": "試練が＿＿＿とあれば、それでも前に進むのがプロというものだ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜という（強調）",
+          "prompt": "彼が無実だ＿＿＿証拠が、ついに見つかった。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜といい〜といい",
+          "prompt": "彼女の作品はデザイン＿＿＿、技術といい、どこをとっても一流だ。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜というか〜というか",
+          "prompt": "彼女の踊りは＿＿＿というか、流れるようというか、見る人を魅了する舞台だった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜というところだ・〜といったところだ",
+          "prompt": "今の技術力では、基本的な機能を＿＿＿といったところだろう。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜というもの",
+          "prompt": "この半年＿＿＿、練習を欠かしたことが一度もない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜といえども",
+          "prompt": "試験が＿＿＿といえども、あきらめずに最後まで取り組むべきだ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜と言えなくもない",
+          "prompt": "彼は今回のプレゼンで、一定の評価を獲得＿＿＿と言えなくもない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜と言ったらありはしない・〜と言ったらない・〜ったらない・〜ったらありじゃない",
+          "prompt": "地方に引っ越してから、車がないと生活が＿＿＿と言ったらなかった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜といって〜ない・〜といった〜ない",
+          "prompt": "長い一日だったが、これと＿＿＿収穫もなく、疲れだけが残った。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜といわず〜といわず",
+          "prompt": "子供たちは顔＿＿＿手といわず、泥だらけになって遊んでいた。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜と（は）打って変わって",
+          "prompt": "先週の不調＿＿＿、山田選手は今週に入って快進撃を続けている。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜（か）と思いきや",
+          "prompt": "やっと問題が＿＿＿と思いきや、また新たなトラブルが起きた。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ときたら",
+          "prompt": "うちの弟＿＿＿、毎晩ゲームばかりして勉強を全然しないんだから。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜としたことが",
+          "prompt": "田中先生＿＿＿、このような基本的なミスをするとは思わなかった。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜としたって・〜にしたって・〜としたところで・〜にしたところで",
+          "prompt": "あのとき正直に＿＿＿にしたって、信じてもらえなかっただろう。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜として〜ない",
+          "prompt": "その提案に対して、委員の中に＿＿＿賛成する者はいなかった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜とは・〜なんて",
+          "prompt": "新しいカフェのコーヒーがこんなに＿＿＿とは思わなかった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜とはいうものの・〜とは言い条",
+          "prompt": "毎朝ジョギング＿＿＿とはいうものの、雨の日はつい休んでしまう。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜とはいえ",
+          "prompt": "梅雨の季節＿＿＿、これほど毎日雨が続くとは思わなかった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜とばかりに",
+          "prompt": "彼女は「全部＿＿＿」とばかりに、棚の本を次々と取り出し始めた。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ともあろうものが",
+          "prompt": "教師＿＿＿、生徒の前でそんな言葉を使うとは情けない。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ともなく・〜ともなしに",
+          "prompt": "窓の外を＿＿＿ともなく眺めていたら、突然大粒の雨が降り始めた。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ともなると・〜ともなれば",
+          "prompt": "一人で海外に＿＿＿ともなれば、語学力だけでなく精神的な強さも必要だ。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜に〜を重ねて",
+          "prompt": "彼は失敗＿＿＿失敗を重ねながらも、決して諦めなかった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜に値する・〜に値しない",
+          "prompt": "この発明は世界中の＿＿＿に値する革新的な技術だ。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜に（は）当たらない",
+          "prompt": "試験に一度落ちただけで、そこまで＿＿＿に当たらないよ。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜にあって（は）・〜にあっても",
+          "prompt": "いかなる逆境＿＿＿、彼女は決して諦めようとしなかった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜に至る・〜に至って（は・も）",
+          "prompt": "彼は何度も過ちを繰り返し、ついに会社を＿＿＿に至った。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜に至るまで",
+          "prompt": "彼のコレクションは、希少な切手から古いコインの製造番号＿＿＿、驚くほど詳細に記録されている。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜に負うところが多い・〜に負うところが大きい",
+          "prompt": "この国の経済発展は、外国からの投資＿＿＿負うところが大きい。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜におかれましては",
+          "prompt": "ご多忙の折、皆様＿＿＿ご健勝のこととお慶び申し上げます。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜に（は）及ばない",
+          "prompt": "その件はすでに解決済みだから、今さら心配＿＿＿及ばない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜に欠かせない・〜が欠かせない",
+          "prompt": "この研究を成功させるには、チーム全員の協力＿＿＿欠かせない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜にかかると・〜にかかったら・〜にかかれば・〜にかかっては",
+          "prompt": "彼の卓越した交渉力＿＿＿、どんなに手強い相手でも最終的には合意に至るという。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜にかかっている",
+          "prompt": "プロジェクトの成否は、チームリーダーの判断力＿＿＿といっても過言ではない。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜に限ったことではない",
+          "prompt": "近年、プラスチック汚染の問題は海洋＿＿＿。陸地や淡水域でも深刻な状況が続いている。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜にかこつけて",
+          "prompt": "仕事の打ち合わせ＿＿＿、以前から気になっていたレストランに寄ることにした。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜にかまけて",
+          "prompt": "彼は趣味＿＿＿、仕事の締め切りをいつも守らない。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜に越したことはない",
+          "prompt": "仕事をするうえで、スキルは＿＿＿越したことはない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜に如くはない",
+          "prompt": "何事も、まずは自分の目で直接＿＿＿に如くはない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜にして",
+          "prompt": "彼女は70歳＿＿＿初めてピアノを始め、今では国際コンクールに出場するほどの腕前になった。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜に忍びない",
+          "prompt": "余命わずかな友人に真実を＿＿＿に忍びず、思わず言葉を濁してしまった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜に準じる・〜に準じ・〜に準じて",
+          "prompt": "部長が欠席のため、副部長が部長＿＿＿会議を進行した。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜に即して・〜に即した・〜に則して・〜に則した",
+          "prompt": "時代の流れ＿＿＿教育を実現するために、カリキュラムを改定しました。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜にたえる・〜にたえない",
+          "prompt": "この論文は国際学会に＿＿＿にたえる研究成果だと高く評価された。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜に足りる・〜に足る",
+          "prompt": "あの政治家の言葉は信頼＿＿＿足らないと多くの国民が感じている。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜に足りない・〜に足らない",
+          "prompt": "あの程度のミスは＿＿＿に足りない。気にせず前に進もう。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜に照らして",
+          "prompt": "この申請が規定＿＿＿審査した結果、承認できないと判断された。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜に止まらず",
+          "prompt": "この技術の影響は医療分野だけ＿＿＿、教育や経済にまで及んでいる。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜に則って",
+          "prompt": "この裁判は、憲法の規定＿＿＿公正に進められなければならない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜にかたくない",
+          "prompt": "何年も音信不通だった娘と再会した父親の喜びは＿＿＿にかたくない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ずじまい",
+          "prompt": "ずっと憧れていたあの俳優に、結局一度も＿＿＿ずじまいで残念だ。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ないではおかない・〜ずにはおかない",
+          "prompt": "彼の一言はその場にいた全員を＿＿＿ずにはおかなかった。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ないではすまない・〜ずにはすまない",
+          "prompt": "大きなミスをしてしまったから、上司に＿＿＿ずにはすまない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜かたがた",
+          "prompt": "この度は大変お世話になりました。お礼＿＿＿、ご連絡申し上げます。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜かたわら",
+          "prompt": "鈴木さんは本業の＿＿＿かたわら、ブログで料理のレシピを発信している。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜がてら",
+          "prompt": "出張で上海を＿＿＿がてら、現地の有名な料理を楽しんだ。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜からある・〜からする・〜からの",
+          "prompt": "その荷物は50キロ＿＿＿重さで、一人では到底持ち上げられない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ごとき・〜ごとく・〜ごとし",
+          "prompt": "雷に打た＿＿＿ごとき衝撃を受け、彼はその場で言葉を失った。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ことだし",
+          "prompt": "彼女は仕事も＿＿＿ことだし、昇進させてあげてはどうでしょう。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜こととて",
+          "prompt": "まだ＿＿＿こととて、至らない点はどうかお許しください。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ことなしに",
+          "prompt": "多くの失敗を＿＿＿ことなしに、大きな成功をつかむことはできない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ことのないよう",
+          "prompt": "同じミスを＿＿＿ことのないよう、今回の原因をしっかり分析してほしい。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜こともあって",
+          "prompt": "この街は物価が＿＿＿ことも あって、若い移住者が年々増えている。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "今ひとつ〜",
+          "prompt": "先月から新しいダイエットを始めたが、今ひとつ効果が＿＿＿。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜以外の何ものでもない",
+          "prompt": "この結果は、努力の＿＿＿以外の何ものでもない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜いかんで・〜いかんでは・〜いかんによっては・〜いかんにかかっている・〜いかんだ",
+          "prompt": "今後の予算配分は、調査結果の＿＿＿、大きく変わる可能性がある。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜いかんにかかわらず・〜いかんによらず・〜いかんをとわず",
+          "prompt": "成績＿＿＿、参加者全員に修了証が授与されます。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "いざ〜となると・いざ〜となれば・いざ〜となったら",
+          "prompt": "いざ自分が人前で＿＿＿となれば、足がすくんでしまう人も多い。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜（で）すら",
+          "prompt": "彼は自分の名前＿＿＿書けないほど、病状が悪化していた。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜そばから",
+          "prompt": "単語を＿＿＿そばから忘れてしまうので、なかなか上達しない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜そびれる",
+          "prompt": "彼女に大切なことを＿＿＿そびれて、ずっと後悔している。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜だけましだ",
+          "prompt": "プレゼンは失敗したが、最後まで発表＿＿＿だけましだった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "ただ〜のみだ",
+          "prompt": "あの演奏はただ＿＿＿のみで、言葉では表現できないほどだった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜だに",
+          "prompt": "あの震災の被害を＿＿＿だに、胸が締め付けられる思いがする。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ためしがない",
+          "prompt": "あの選手は大事な試合で本来の実力を＿＿＿ためしがない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜たらきりがない・〜ばきりがない",
+          "prompt": "このプロジェクトの問題点を＿＿＿きりがない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜たる・〜たるもの",
+          "prompt": "公務員＿＿＿、私利私欲のために職権を乱用してはならない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てからというもの",
+          "prompt": "海外に＿＿＿からというもの、日本の食事が恋しくてたまらない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てしかるべきだ",
+          "prompt": "これほどの重大なミスを犯した以上、会社側は責任を＿＿＿しかるべきだ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜でなくてなんだろう",
+          "prompt": "見知らぬ人が川に落ちたと聞き、迷わず飛び込んで救助した。これが本物の勇気＿＿＿。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ではあるまいし",
+          "prompt": "一度＿＿＿ではあるまいし、すぐに諦めないでもう少し頑張ってみよう。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜てはかなわない",
+          "prompt": "駅から遠いし、交通がこんなに＿＿＿かなわない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ては〜ては",
+          "prompt": "彼は答えをノートに＿＿＿ては消し、また書いては消しを繰り返した。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜て憚らない",
+          "prompt": "あの政治家は政府の政策を公の場で＿＿＿憚らない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜てはやりきれない",
+          "prompt": "この工場の中がいつも＿＿＿はやりきれない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜でもしたら",
+          "prompt": "嵐の中、船が＿＿＿でもしたら、乗客全員が危険にさらされる。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ても知らない",
+          "prompt": "そんな無茶を＿＿＿も知らないよ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜でもって",
+          "prompt": "彼は長年の経験と熱意＿＿＿、難しい交渉をまとめ上げた。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜てもどうにもならない・〜てもどうなるものでもない",
+          "prompt": "もう締め切りを過ぎたんだから、今さら＿＿＿もどうにもならないよ。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜て元々だ",
+          "prompt": "どうせ捨てるつもりだったから、＿＿＿元々だ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜でも何でもない・〜くも何ともない",
+          "prompt": "彼が断ったのは失礼＿＿＿何でもない。ただ先約があっただけのことだ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜とて",
+          "prompt": "どんな名医＿＿＿、人の寿命を思い通りに延ばすことはできない。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜とまではいかないが・〜とまではいかないとしても",
+          "prompt": "今回の試験は＿＿＿とまではいかないが、ある程度手応えを感じた。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜とまでは言わないが・〜とまでは言わないとしても",
+          "prompt": "部署を＿＿＿とまでは言わないが、もう少し周りへの気配りを持って仕事をしてほしい。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ないものでもない",
+          "prompt": "辞書さえあれば、この難しい文章も＿＿＿ものでもない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ながらに・〜ながらの",
+          "prompt": "この町には＿＿＿ながらの商店街が今も残っている。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜なくして（は）",
+          "prompt": "チームワーク＿＿＿は、どんなに優秀な個人でも限界があります。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜なしに・〜なしには・〜なしでは",
+          "prompt": "十分な練習＿＿＿、どんな技術も身につかないものだ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜ならいざしらず",
+          "prompt": "専門家＿＿＿、素人が難しい専門書を理解できなくても当然だ。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜なり",
+          "prompt": "子供はプレゼントを＿＿＿なり、大声で泣き出した。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜なりとも",
+          "prompt": "せめて一言＿＿＿お礼が言いたかった。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜なり〜なり",
+          "prompt": "体調が悪いなら、早めに帰宅＿＿＿なり有給を取るなり、無理をしないでください。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜なりに・〜なりの",
+          "prompt": "このホテルは値段が＿＿＿なりのサービスを提供している。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜には無理がある",
+          "prompt": "運動不足の人＿＿＿、突然フルマラソンに参加するのは無理がある。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜にひきかえ（て）",
+          "prompt": "兄の部屋がいつも＿＿＿のにひきかえ、私はどうも整理整頓が苦手だ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜にもほどがある",
+          "prompt": "部下の前でそんなことを言うとは、上司の＿＿＿にもほどがある。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜にもまして",
+          "prompt": "今年の夏は例年＿＿＿暑い日が続いている。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜によるところが大きい",
+          "prompt": "彼の語学力の向上は、長年の留学経験＿＿＿よるところが大きい。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜の至りだ",
+          "prompt": "このような賞をいただけるとは、光栄＿＿＿至りです。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜の極みだ",
+          "prompt": "世界中で活躍する選手たちの演技を生で見られて、感激＿＿＿極みだ。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜のなんの",
+          "prompt": "彼女が突然現れて＿＿＿のなんのって、心臓が止まりそうになった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "（ただ）〜のみならず・〜のみか",
+          "prompt": "彼女は英語を＿＿＿のみならず、教材の開発にも積極的に携わっている。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜はおろか",
+          "prompt": "彼は英語＿＿＿、母語の日本語の文章さえまともに書けない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜ばこそ",
+          "prompt": "毎日コツコツと努力＿＿＿こそ、夢が実現できると信じています。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜はさておき・〜はさておいて",
+          "prompt": "細かいルール＿＿＿、まず全体の流れを確認しましょう。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜弾み",
+          "prompt": "椅子から急に立ち上がっ＿＿＿弾みに、腰に鋭い痛みが走った。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜はそっちのけで・〜をそっちのけで",
+          "prompt": "今月の締め切り＿＿＿、田中さんは新しい趣味に没頭している。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜羽目になる・〜羽目に陥る",
+          "prompt": "電車を乗り過ごし、次の便を長時間＿＿＿羽目になってしまった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜べからず・〜べからざる",
+          "prompt": "聖地に無断で＿＿＿べからず、という戒律がある。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜べく",
+          "prompt": "長年の夢を＿＿＿べく、彼女は海外留学を決意した。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜べくして",
+          "prompt": "あの企業は数年前から経営が急速に悪化しており、＿＿＿べくして倒産した。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜べくもない",
+          "prompt": "山頂から見た夕焼けの美しさは、言葉では＿＿＿べくもなかった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜まじき",
+          "prompt": "患者を＿＿＿まじき行為だと、医師免許の取り消しが検討された。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜までだ・〜までのことだ",
+          "prompt": "もし転職がうまくいかなければ、フリーランスとして＿＿＿までのことだ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜までもなく・〜までもない",
+          "prompt": "そんな簡単な計算は電卓を＿＿＿までもない、暗算で十分だ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜まみれ",
+          "prompt": "マラソンを完走した選手は汗＿＿＿になり、その場に倒れ込んだ。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜めく",
+          "prompt": "二月の末になり、梅の花が咲き始めて、野も山も春＿＿＿きた。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜も顧みず・〜を顧みず",
+          "prompt": "彼女は自分の身＿＿＿、炎の中に飛び込んで子供を救い出した。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜もさることながら",
+          "prompt": "彼女の美しさ＿＿＿、その卓越した演技力で多くの人々を魅了している。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜も同然だ・〜も同然の",
+          "prompt": "彼はすでに上司に辞意を伝えている。もう会社を＿＿＿も同然だ。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ものと思われる",
+          "prompt": "このプロジェクトのリスクは予想より＿＿＿ものと思われる。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ものを",
+          "prompt": "出発前に地図を＿＿＿ものを、確認しないで家を出たから迷子になった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜や否や",
+          "prompt": "先生が教室に入る＿＿＿否や、生徒たちは静かになった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜矢先に",
+          "prompt": "これから＿＿＿矢先に、急な来客があって外出できなかった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜やしない・〜はしない",
+          "prompt": "彼はどんなに頼まれても、そんなことは＿＿＿はしない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "やれ〜やれ〜",
+          "prompt": "彼女はやれ＿＿＿だやれ人間関係だと、いつも愚痴をこぼしている。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜（が）ゆえ（に）・〜ゆえの",
+          "prompt": "科学技術が急速に＿＿＿ゆえに、社会の変化への対応も求められる。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜ようによっては",
+          "prompt": "この薬は＿＿＿ようによっては、深刻な副作用が現れることもある。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜をおいて",
+          "prompt": "次世代を担う指導者は、彼＿＿＿ほかにいないと皆が思っている。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜を押して・〜を押し切って",
+          "prompt": "親の＿＿＿を押して、彼女は医学部への進学を決めた。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜を限りに",
+          "prompt": "彼は今日の試合＿＿＿限りに、プロ野球を引退すると発表した。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜を皮切りに（して）",
+          "prompt": "その歌手の東京公演＿＿＿、全国各地でコンサートが次々と開催された。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜を機に",
+          "prompt": "彼女は結婚＿＿＿機に、長年勤めた会社を辞めて起業した。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜を禁じ得ない",
+          "prompt": "子どもたちの懸命な演奏に、感動＿＿＿。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜を蔑ろにする",
+          "prompt": "彼は仕事のために家族＿＿＿蔑ろにしてきたことを、今になって後悔している。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜をなおざりにして",
+          "prompt": "健康＿＿＿なおざりにしていると、将来必ず後悔することになりますよ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜を控え・〜を控えて・〜を控えた",
+          "prompt": "卒業試験＿＿＿学生たちは、図書館に長い列を作っていた。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜を踏まえ・〜を踏まえて",
+          "prompt": "今回の調査結果を＿＿＿、新たな対策を講じることにした。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜を振り出しに",
+          "prompt": "東京＿＿＿振り出しに、全国でコンサートが開催された。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜を経て",
+          "prompt": "何年もの研究開発＿＿＿、この新薬がついに完成した。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜をもって・〜をもちまして",
+          "prompt": "本セミナーはただいま＿＿＿、終了とさせていただきます。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜をものともせずに",
+          "prompt": "彼は激しい嵐＿＿＿、単独で山頂を目指した。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜を余儀なくさせる・〜を余儀なくされる",
+          "prompt": "会社の倒産により、従業員たちは突然の失業＿＿＿。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜をよそに",
+          "prompt": "両親の心配＿＿＿よそに、彼は突然会社を辞めて旅に出た。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜んがため（に・の）",
+          "prompt": "彼は夢を＿＿＿んがために、あらゆる困難に立ち向かった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜んじゃなかった",
+          "prompt": "彼女にあんなひどいことを＿＿＿んじゃなかった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜んだって・〜んですって",
+          "prompt": "同僚から聞いたんだけど、田中さんの奥さんは元女優＿＿＿って。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜んばかり（に・の・だ）",
+          "prompt": "知らせを聞いた彼女は、嬉しさで＿＿＿んばかりだった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜かれ〜かれ",
+          "prompt": "彼も＿＿＿かれ少なかれ、この件に責任を負うべきだ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜を境に",
+          "prompt": "彼は大きな事故＿＿＿、車の運転をやめてしまった。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜だの〜だの",
+          "prompt": "弟はゲームを＿＿＿だの、動画を見るだのして、全然勉強しない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜もそこそこに",
+          "prompt": "彼は朝食＿＿＿、急いで家を出た。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ほどのことではない",
+          "prompt": "少しミスをしてしまったが、そこまで＿＿＿ほどのことではない。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜びる",
+          "prompt": "このカフェの内装は＿＿＿びていて、独特の雰囲気を醸し出している。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜拍子に",
+          "prompt": "くしゃみを＿＿＿拍子に、眼鏡が飛んでいってしまった。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "〜手前",
+          "prompt": "同僚たちの前で絶対に成功させると豪語＿＿＿手前、失敗は許されない。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "〜わ〜わで",
+          "prompt": "試験前は課題が＿＿＿わ、体調も悪いわで、全然集中できなかった。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "案の定",
+          "prompt": "天気が崩れそうだと思いながらも出かけたら、＿＿＿途中で大雨に降られた。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "一向に〜ない",
+          "prompt": "何度注意しても、子どもたちの騒ぎ声が一向に＿＿＿。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "今にも〜そう",
+          "prompt": "空が真っ暗になってきた。今にも雨が＿＿＿そうな空模様だ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "お言葉に甘えて",
+          "prompt": "「よかったらこのお菓子、持って帰ってください」と言われたので、「では、＿＿＿、ありがたくいただきます」とお礼を伝えた。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ぐるみ",
+          "prompt": "この地域では、町＿＿＿でリサイクル運動に取り組んでいる。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜こと請け合いだ",
+          "prompt": "この温泉はお湯が＿＿＿こと請け合いですよ。ぜひ行ってみてください。",
+          "questionCount": 4
+        },
+        {
+          "pattern": "たかが〜（くらい）で",
+          "prompt": "たかが1回＿＿＿くらいで、そんなに落ち込まなくていいよ。",
+          "questionCount": 2
+        },
+        {
+          "pattern": "ただでさえ",
+          "prompt": "最近は体調を崩していて、＿＿＿無理ができないのに、週末まで出勤するよう命じられてしまった。",
+          "questionCount": 1
+        },
+        {
+          "pattern": "〜ってば",
+          "prompt": "もう＿＿＿ってば！さっきから同じことしか言ってないじゃない。",
+          "questionCount": 3
+        },
+        {
+          "pattern": "〜一途をたどる",
+          "prompt": "近年、この町の人口は＿＿＿一途をたどり、過疎化が深刻になっている。",
+          "questionCount": 4
+        }
+      ]
+    }
+  }
+}

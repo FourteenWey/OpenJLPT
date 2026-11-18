@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # 一键管理 VOICEVOX Engine 与本平台（Vite 开发服务器）。
 #
-#   ./start.sh [动作] [目标] [--open]
+#   ./start.sh [动作] [目标] [--open | --no-open]
 #
 #   动作  start（默认）  启动；已在运行的会跳过
 #         stop           停止
@@ -9,7 +9,8 @@
 #         status         查看运行状态（全部在运行返回 0，否则返回 1）
 #         logs           跟随查看日志（Ctrl-C 退出）
 #   目标  app（默认，只管本平台）| voicevox（可选，需已安装 VOICEVOX）| all（两者）
-#   --open  启动成功后用浏览器打开本平台
+#   --open     本平台就绪后用默认浏览器打开（默认）
+#   --no-open  不打开浏览器
 #
 # 引擎查找顺序：$VOICEVOX_ENGINE、项目根目录的 voicebox-engine/ 或 voicevox-engine/、/Applications/VOICEVOX.app。
 # 环境变量：APP_HOST APP_PORT VOICEVOX_HOST VOICEVOX_PORT
@@ -36,12 +37,12 @@ pidfile() { echo "$RUN_DIR/$1.pid"; }
 logfile() { echo "$RUN_DIR/$1.log"; }
 
 # 用响应内容确认端口上就是本服务，而不是恰好占用同一端口的其它程序：
-# 本平台的页面标题是「JLPT 词汇快筛」；VOICEVOX 的 /version 返回带引号的版本号（如 "0.24.1"）。
+# 本平台通过首页的 application-name 标识识别；VOICEVOX 的 /version 返回带引号的版本号（如 "0.24.1"）。
 is_up() {
   local body re='^"[0-9][^"]*"$'
   body=$(curl -fsS -m 2 "$(health_url "$1")" 2>/dev/null) || return 1
   case $1 in
-    app) [[ $body == *"JLPT 词汇快筛"* ]] ;;
+    app) [[ $body == *'name="application-name" content="OpenJLPT"'* ]] ;;
     voicevox) [[ $body =~ $re ]] ;;
   esac
 }
@@ -240,11 +241,12 @@ usage() { sed -n '2,/^$/s/^# \{0,1\}//p' "$0"; }
 
 ACTION=start
 TARGET=app
-OPEN=0
+OPEN=1
 for arg in "$@"; do
   case $arg in
     -h | --help) usage; exit 0 ;;
     --open) OPEN=1 ;;
+    --no-open) OPEN=0 ;;
     start | stop | restart | status | logs) ACTION=$arg ;;
     all | app | voicevox) TARGET=$arg ;;
     *) echo "未知参数：$arg" >&2; usage >&2; exit 2 ;;

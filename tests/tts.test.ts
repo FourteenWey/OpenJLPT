@@ -8,6 +8,7 @@ import {
   cacheKey,
   getTtsStatus,
   getVoicevoxSpeaker,
+  prefetchKana,
   resetTtsState,
   setEnginePref,
   setSpeed,
@@ -15,6 +16,7 @@ import {
   setVoicevoxSpeaker,
   speakWord,
   speakWordThenExample,
+  speakText,
   stopSpeaking,
 } from '../src/lib/tts'
 
@@ -162,6 +164,70 @@ describe('Web Speech（默认引擎）', () => {
 
 describe('VOICEVOX（可选引擎）', () => {
   beforeEach(() => setEnginePref('voicevox'))
+
+  const sentence = { wordId: 'grammar:answer', kana: 'あの人は先生です。', speed: 1 }
+
+  it('答题前只预合成正确句，提交后直接播放缓存，不再请求引擎', async () => {
+    const fetchMock = engineFetch()
+    vi.stubGlobal('fetch', fetchMock)
+    await prefetchKana(sentence, new AbortController().signal)
+    expect(fetchMock).toHaveBeenCalledTimes(2)
+    expect(played).toHaveLength(0)
+    expect(utterances).toHaveLength(0)
+    expect(audioCacheSize()).toBe(1)
+
+    await speakText(sentence.wordId, sentence.kana)
+    expect(fetchMock).toHaveBeenCalledTimes(2)
+    expect(played).toHaveLength(1)
+  })
+
+  it('快速提交时复用尚未完成的预取，取消预取也不打断已接手的播放', async () => {
+    let finishQuery!: (value: ReturnType<typeof ok>) => void
+    const fetchMock = vi.fn((url: string) => url.includes('/audio_query')
+      ? new Promise<ReturnType<typeof ok>>((resolve) => { finishQuery = resolve })
+      : Promise.resolve(ok('wav')))
+    vi.stubGlobal('fetch', fetchMock)
+    const controller = new AbortController()
+    const preparing = prefetchKana(sentence, controller.signal)
+    const playback = speakText(sentence.wordId, sentence.kana)
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+    controller.abort()
+    finishQuery(ok('{}'))
+    await Promise.all([preparing, playback])
+    expect(fetchMock).toHaveBeenCalledTimes(2)
+    expect(played).toHaveLength(1)
+  })
+
+  it('切题后即使旧题预合成稍后完成，也不会补播旧句', async () => {
+    let finishQuery!: (value: ReturnType<typeof ok>) => void
+    vi.stubGlobal('fetch', vi.fn((url: string) => url.includes('/audio_query')
+      ? new Promise<ReturnType<typeof ok>>((resolve) => { finishQuery = resolve })
+      : Promise.resolve(ok('wav'))))
+    const preparing = prefetchKana(sentence, new AbortController().signal)
+    const playback = speakText(sentence.wordId, sentence.kana)
+    stopSpeaking()
+    await playback
+    finishQuery(ok('{}'))
+    await preparing
+    expect(played).toHaveLength(0)
+    expect(utterances).toHaveLength(0)
+  })
+
+  it('预取失败不发声，提交后回退系统 TTS；关闭朗读不预取也不播放', async () => {
+    const fetchMock = vi.fn(async () => { throw new TypeError('Failed to fetch') })
+    vi.stubGlobal('fetch', fetchMock)
+    await prefetchKana(sentence, new AbortController().signal)
+    expect(utterances).toHaveLength(0)
+    await speakText(sentence.wordId, sentence.kana)
+    expect(utterances.map((item) => item.text)).toEqual([sentence.kana])
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+
+    setTtsEnabled(false)
+    await prefetchKana({ ...sentence, wordId: 'other' }, new AbortController().signal)
+    await speakText('other', sentence.kana)
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+    expect(utterances).toHaveLength(1)
+  })
 
   it('audio_query → synthesis；读音用词表假名，语速写进查询', async () => {
     const fetchMock = engineFetch()

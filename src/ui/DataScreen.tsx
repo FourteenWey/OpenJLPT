@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BUILTIN_IDS, ensureBuiltin, type BuiltinKind } from '../db/builtin'
+import { BUILTIN_IDS, BUILTIN_NAMES, ensureBuiltin, type BuiltinKind } from '../db/builtin'
 import { deleteWordlist, listWordlists } from '../db/wordlists'
 import { BackupPanel } from './BackupPanel'
 import { ImportForm } from './ImportForm'
@@ -7,10 +7,10 @@ import { useApp } from './app-context'
 import { useLoad } from './useLoad'
 import { FRAME_LABEL, SCOPE_LABEL } from './format'
 import { errText } from './useScanSession'
+import type { StudySubject } from '../types'
+import { GrammarLibrary } from './GrammarLibrary'
 
-const BUILTIN_LABEL: Record<BuiltinKind, string> = { n3: '载入 OpenJLPT N3（仅 N3，1659 词）', cumulative: '载入 OpenJLPT N5–N3 累计（2963 词）' }
-
-export function DataScreen() {
+export function DataScreen({ subject = 'vocabulary' }: { subject?: StudySubject }) {
   const { db, version, bump } = useApp()
   const { data: lists, error } = useLoad(() => listWordlists(db), [db, version])
   const [msg, setMsg] = useState('')
@@ -34,13 +34,17 @@ export function DataScreen() {
   const loaded = new Set(lists?.map((l) => l.id))
   return (
     <div className="panel">
-      <section className="block">
+      {subject === 'grammar' ? <GrammarLibrary /> : <><section className="block">
         <h2>词表</h2>
         {error && <p className="error">{error}</p>}
         <ul className="cards">
           {lists?.map((l) => (
             <li key={l.id}>
-              <div><strong>{l.name}</strong> <span className={`badge scope-${l.scope}`}>{SCOPE_LABEL[l.scope]}</span> <span className="muted small">{l.wordIds.length} 词 · {FRAME_LABEL[l.frameType]}</span></div>
+              <div>
+                <strong>{l.name}</strong>{' '}
+                {!l.scope.endsWith('-only') && <><span className={`badge scope-${l.scope}`}>{SCOPE_LABEL[l.scope]}</span>{' '}</>}
+                <span className="muted small">{l.wordIds.length} 词 · {FRAME_LABEL[l.frameType]}</span>
+              </div>
               <div className="muted small">来源：{l.source.label}{l.source.version && `（${l.source.version}）`}{l.source.license && ` · ${l.source.license}`}</div>
               {l.source.attribution && <div className="muted small">{l.source.attribution}</div>}
               <button onClick={() => remove(l.id, l.name)}>删除词表</button>
@@ -48,16 +52,17 @@ export function DataScreen() {
           ))}
         </ul>
         <div className="row">
-          {(Object.keys(BUILTIN_IDS) as BuiltinKind[]).filter((k) => !loaded.has(BUILTIN_IDS[k])).map((k) => <button key={k} onClick={() => load(k)}>{BUILTIN_LABEL[k]}</button>)}
+          {(Object.keys(BUILTIN_IDS) as BuiltinKind[]).filter((k) => !loaded.has(BUILTIN_IDS[k])).map((k) => <button key={k} onClick={() => load(k)}>载入 {BUILTIN_NAMES[k]}</button>)}
         </div>
         {msg && <p className="notice" role="status">{msg}</p>}
         <p className="muted small">
-          N3-only 与 N5–N3 累计是两个独立词表，各自抽样、各自统计；同一个词在两个词表里共用同一条首评。
+          OpenJLPT N1 到 N5 各有独立词表，各自抽样、各自统计。同一个词跨词表共用首评。
           内置释义为英文（JMdict）。N3 词另附 AI 生成的中文释义（未经人工校对，卡片上有标记，带「待核对」的是生成时没把握的词）；
-          导入带 <code>meaning_zh</code> 列的自己的词表后，以你的为准。N4/N5 词暂无中文释义。
+          导入带 <code>meaning_zh</code> 列的自己的词表后，以你的为准。
         </p>
       </section>
       <ImportForm />
+      </>}
       <BackupPanel />
       <section className="block">
         <h3>数据来源与许可</h3>
@@ -68,6 +73,7 @@ export function DataScreen() {
           JLPT 级别是社区整理的非官方近似，官方并未公布考试词表。完整署名见项目内 NOTICE.md。
         </p>
         <p className="small">朗读语音：默认为系统本地 TTS；选用 VOICEVOX 时为顶栏所选角色的声音（默认 VOICEVOX:もち子(cv 明日葉よもぎ)，由本机 VOICEVOX Engine 合成）；公开发布生成的音频时，请按所选角色的规约署名。</p>
+        <p className="small">内置语法点与级别整理自手机应用「语法题列表」（shiri.jp），题干、选项与中文解析由本项目编写。</p>
       </section>
     </div>
   )

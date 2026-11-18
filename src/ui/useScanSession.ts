@@ -1,10 +1,13 @@
 import { useCallback, useEffect, useState } from 'react'
-import type { Attempt, Baseline, Grade, Session, Word } from '../types'
-import { getSession, jumpTo, setSessionStatus } from '../db/sessions'
-import { rateBaseline, undoLastBaseline } from '../db/rating'
+import type { Attempt, Baseline, Grade, Session, StudySubject, Word } from '../types'
+import { dismissQuizFeedback, jumpTo, resumeSession, setSessionStatus } from '../db/sessions'
+import { rateBaseline, undoLastBaseline, type RateInput } from '../db/rating'
 import { getBaselineMap, getSessionAttempts } from '../db/queries'
 import { getWords } from '../db/wordlists'
+import { grammarById } from '../lib/grammar'
+import { getGrammarQuestion, quizAnswers } from '../lib/grammarQuiz'
 import { speakWord, speakWordThenExample, stopSpeaking } from '../lib/tts'
+import { useGrammarAudio } from './useGrammarAudio'
 import { useApp } from './app-context'
 import { useCardTimer, useHotkeys } from './hooks'
 
@@ -23,8 +26,8 @@ export function useScanSession(sessionId: string) {
   const [panel, setPanel] = useState<Panel>(null)
   const [msg, setMsg] = useState('')
 
-  const refresh = useCallback(async () => {
-    const [b, l] = await Promise.all([getBaselineMap(db), getSessionAttempts(db, sessionId)])
+  const refresh = useCallback(async (subject?: StudySubject) => {
+    const [b, l] = await Promise.all([getBaselineMap(db, subject), getSessionAttempts(db, sessionId)])
     setBaselines(b)
     setLog(l)
   }, [db, sessionId])
@@ -32,10 +35,9 @@ export function useScanSession(sessionId: string) {
   useEffect(() => {
     let alive = true
     ;(async () => {
-      const s = await getSession(db, sessionId)
-      if (!s) throw new Error('会话不存在')
-      const ws = await getWords(db, s.order)
-      await refresh()
+      const s = await resumeSession(db, sessionId)
+      const ws = s.subject === 'grammar' ? [] : await getWords(db, s.order)
+      await refresh(s.subject)
       if (!alive) return
       setWords(new Map(ws.map((w) => [w.id, w])))
       setSession(s)
@@ -45,10 +47,21 @@ export function useScanSession(sessionId: string) {
     }
   }, [db, sessionId, refresh])
 
-  const current = session ? words.get(session.order[session.cursor]) : undefined
+  const currentId = session?.order[session.cursor]
+  const current = currentId ? words.get(currentId) : undefined
+  const quiz = session?.grammarQuiz
+  const questionId = session?.quizFeedback?.wordId ?? currentId
+  const question = session && quiz && questionId ? getGrammarQuestion(questionId, session.seed) : undefined
+  const answers = quiz ? quizAnswers(log) : []
+  const feedback = session?.quizFeedback ? answers.find((a) => a.id === session.quizFeedback?.attemptId) : undefined
+  const grammarPoint = !quiz && session?.subject === 'grammar' && currentId ? grammarById.get(currentId) : undefined
+  const hasCard = !!(current || grammarPoint || question)
   const paused = session?.status === 'paused'
-  const done = session?.status === 'completed'
-  const timer = useCardTimer(current && !done ? `${sessionId}:${current.id}` : null, paused || panel !== null)
+  const done = session?.status === 'completed' && !session.quizFeedback
+  const timer = useCardTimer(hasCard && !done && !session?.quizFeedback ? `${sessionId}:${currentId}` : null, paused || panel !== null || !!session?.quizFeedback)
+  const nextId = quiz && session ? session.order[session.cursor + (session.quizFeedback ? 0 : 1)] : undefined
+  const speakGrammar = useGrammarAudio({ questionId: quiz && !done ? questionId : undefined, question, feedback,
+    nextId, paused, blocked: !!panel || !!done, onError: setMsg })
 
   const act = async (fn: () => Promise<void>) => {
     if (busy) return
@@ -64,25 +77,40 @@ export function useScanSession(sessionId: string) {
   }
 
   const speak = () => {
+    if (quiz) return speakGrammar()
     if (current && revealed && !paused && !done && !panel) speakWord(current).catch((e) => setMsg(errText(e)))
   }
   const reveal = () => {
-    if (current && !revealed && !paused && !done && !panel) {
+    if (hasCard && !revealed && !paused && !done && !panel) {
       timer.markReveal()
       setRevealed(true)
-      speakWordThenExample(current, session?.hint === 'example' ? current.example : undefined).catch((e) => setMsg(errText(e)))
+      if (current) speakWordThenExample(current, session?.hint === 'example' ? current.example : undefined).catch((e) => setMsg(errText(e)))
     }
   }
-  const grade = (g: Grade) => {
-    if (!current || !revealed || paused || done || panel) return
-    stopSpeaking()
-    return act(async () => {
-      const res = await rateBaseline(db, { sessionId, wordId: current.id, grade: g, ...timer.read() })
+  const saveAnswer = (input: RateInput) =>
+    act(async () => {
+      const res = await rateBaseline(db, input)
       setSession(res.session)
       setRevealed(false)
-      await refresh()
+      await refresh(res.session.subject)
       bump()
     })
+
+  const grade = (g: Grade) => {
+    if (quiz || !currentId || !hasCard || !revealed || paused || done || panel) return
+    if (current) stopSpeaking()
+    return saveAnswer({ sessionId, wordId: currentId, grade: g, ...timer.read() })
+  }
+  const choose = (index: number) => {
+    if (!currentId || !question || session?.quizFeedback || paused || done || panel) return
+    const choice = question.options[index]
+    if (choice === undefined) return
+    const { durationMs } = timer.read()
+    return saveAnswer({ sessionId, wordId: currentId, choice, durationMs, revealMs: durationMs })
+  }
+  const nextQuestion = () => {
+    if (!session?.quizFeedback || !feedback || panel) return
+    return act(async () => setSession(await dismissQuizFeedback(db, sessionId, feedback.id)))
   }
   const undo = () => {
     if (!session || paused || panel) return
@@ -91,12 +119,12 @@ export function useScanSession(sessionId: string) {
       if (!r.ok) return setMsg(r.message)
       setSession(r.session)
       setRevealed(false)
-      await refresh()
+      await refresh(r.session.subject)
       bump()
     })
   }
   const togglePause = () => {
-    if (!session || done || panel) return
+    if (!session || done || session.quizFeedback || panel) return
     return act(async () => setSession(await setSessionStatus(db, sessionId, paused ? 'active' : 'paused')))
   }
   const jump = (n: number) =>
@@ -109,16 +137,18 @@ export function useScanSession(sessionId: string) {
 
   useHotkeys(
     {
-      Space: () => (paused ? togglePause() : reveal()),
-      KeyA: () => grade('A'),
-      KeyS: () => grade('B'),
-      KeyD: () => grade('C'),
+      Space: paused ? togglePause : quiz ? (feedback ? nextQuestion : undefined) : reveal,
+      KeyA: quiz ? () => choose(0) : () => grade('A'),
+      KeyB: quiz ? () => choose(1) : undefined,
+      KeyC: quiz ? () => choose(2) : undefined,
+      KeyD: quiz ? () => choose(3) : () => grade('C'),
+      KeyS: quiz ? undefined : () => grade('B'),
       KeyR: speak,
       KeyZ: undo,
       'Mod+KeyZ': undo,
       Backspace: undo,
       KeyP: togglePause,
-      KeyG: () => !paused && !done && setPanel('jump'),
+      KeyG: () => !paused && !done && !session?.quizFeedback && setPanel('jump'),
       KeyH: () => toggle('history'),
       'Shift+Slash': () => toggle('help'),
       Escape: () => setPanel(null),
@@ -126,5 +156,5 @@ export function useScanSession(sessionId: string) {
     !!session,
   )
 
-  return { session, words, baselines, log, current, revealed, busy, panel, msg, paused, done, setPanel, reveal, speak, grade, undo, togglePause, jump }
+  return { session, words, baselines, log, current, grammarPoint, question, answers, feedback, revealed, busy, panel, msg, paused, done, setPanel, reveal, speak, grade, choose, nextQuestion, undo, togglePause, jump }
 }

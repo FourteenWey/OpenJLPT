@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { Grade, ReviewItem, Word } from '../types'
 import { GRADE_KEY, GRADE_LABEL } from '../types'
+import { selectWordlist } from '../db/builtin'
 import { getBaselineMap } from '../db/queries'
 import { listReviewItems } from '../db/review'
 import { getWords, listWordlists } from '../db/wordlists'
@@ -19,7 +20,7 @@ export function WrongWords() {
   const [filter, setFilter] = useState<Filter>('active')
   const { data, error } = useLoad(async () => {
     const lists = await listWordlists(db)
-    const list = lists.find((l) => l.id === listId) ?? lists[0]
+    const list = selectWordlist(lists, listId)
     const inList = new Set(list?.wordIds)
     const items = (await listReviewItems(db)).filter((i) => inList.has(i.wordId))
     const words = new Map((await getWords(db, items.map((i) => i.wordId))).map((w) => [w.id, w]))

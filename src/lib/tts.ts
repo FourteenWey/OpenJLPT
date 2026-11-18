@@ -7,6 +7,8 @@ import {
   isAbort,
   meloTtsProvider,
   playBlob,
+  prepareWebSpeech,
+  setVoicevoxSpeaker as writeVoicevoxSpeaker,
   voicevoxSynthesize,
   webSpeechProvider,
   type EngineId,
@@ -19,7 +21,6 @@ export {
   VOICEVOX_URL,
   fetchVoicevoxCharacters,
   getVoicevoxSpeaker,
-  setVoicevoxSpeaker,
   type VoicevoxCharacter,
 } from './ttsProviders'
 
@@ -46,15 +47,23 @@ const write = (k: string, v: string): void => {
 }
 
 export const ttsEnabled = (): boolean => read(K_ON) !== 'off'
-export const setTtsEnabled = (on: boolean): void => write(K_ON, on ? 'on' : 'off')
+const settingsListeners = new Set<() => void>()
+const settingsChanged = () => settingsListeners.forEach((listener) => listener())
+export const subscribeTtsSettings = (listener: () => void): (() => void) => {
+  settingsListeners.add(listener)
+  return () => void settingsListeners.delete(listener)
+}
+export const getTtsSettings = (): string => [ttsEnabled(), getEnginePref(), getVoicevoxSpeaker(), getSpeed()].join('|')
+export const setTtsEnabled = (on: boolean): void => { write(K_ON, on ? 'on' : 'off'); settingsChanged() }
 /** 默认 Web Speech；只有用户主动选了 VOICEVOX 才会连接本地引擎。 */
 export const getEnginePref = (): EnginePref => (read(K_ENGINE) === 'voicevox' ? 'voicevox' : 'webspeech')
-export const setEnginePref = (e: EnginePref): void => write(K_ENGINE, e)
+export const setEnginePref = (e: EnginePref): void => { write(K_ENGINE, e); settingsChanged() }
 export function getSpeed(): number {
   const n = Number(read(K_SPEED))
   return (SPEEDS as readonly number[]).includes(n) ? n : 1
 }
-export const setSpeed = (n: number): void => write(K_SPEED, String(n))
+export const setSpeed = (n: number): void => { write(K_SPEED, String(n)); settingsChanged() }
+export const setVoicevoxSpeaker = (id: number): void => { writeVoicevoxSpeaker(id); settingsChanged() }
 
 // ---------- 当前引擎状态（供界面订阅）----------
 
@@ -80,6 +89,12 @@ export const subscribeTts = (l: () => void): (() => void) => {
 
 const CACHE_MAX = 80
 const cache = new Map<string, Blob>()
+interface SynthesisJob {
+  controller: AbortController
+  promise: Promise<Blob>
+  users: number
+}
+const pending = new Map<string, SynthesisJob>()
 /** 键：词汇 ID、读音、音色、速度、重音。任何一项变化都会重新合成。 */
 export const cacheKey = (r: SpeakRequest): string => [r.wordId, r.kana, getVoicevoxSpeaker(), r.speed, r.accent ?? ''].join('|')
 export const audioCacheSize = (): number => cache.size
@@ -90,9 +105,77 @@ let voicevoxDownUntil = 0
 /** 清空缓存、失败退避与状态（测试和「重置」用）。 */
 export function resetTtsState(): void {
   stopSpeaking()
+  pending.forEach((job) => job.controller.abort())
+  pending.clear()
   cache.clear()
   voicevoxDownUntil = 0
   setStatus({ engine: null, label: '', note: '' })
+}
+
+/** 预取和播放共享合成任务；最后一个使用者离开时取消请求。 */
+async function voicevoxAudio(req: SpeakRequest, signal: AbortSignal): Promise<Blob> {
+  if (signal.aborted) throw new DOMException('aborted', 'AbortError')
+  const key = cacheKey(req)
+  const hit = cache.get(key)
+  if (hit) {
+    cache.delete(key)
+    cache.set(key, hit)
+    return hit
+  }
+  let job = pending.get(key)
+  if (!job) {
+    const controller = new AbortController()
+    const created: SynthesisJob = {
+      controller,
+      users: 0,
+      promise: voicevoxSynthesize(req, controller.signal).then((blob) => {
+        if (controller.signal.aborted) throw new DOMException('aborted', 'AbortError')
+        cache.set(key, blob)
+        if (cache.size > CACHE_MAX) cache.delete(cache.keys().next().value as string)
+        return blob
+      }).catch((e) => {
+        if (!controller.signal.aborted && !isAbort(e)) voicevoxDownUntil = Date.now() + RETRY_AFTER_MS
+        throw e
+      }).finally(() => {
+        if (pending.get(key) === created) pending.delete(key)
+      }),
+    }
+    pending.set(key, created)
+    job = created
+  }
+  const active = job
+  active.users++
+  return new Promise<Blob>((resolve, reject) => {
+    let finished = false
+    const finish = (blob?: Blob, error?: unknown) => {
+      if (finished) return
+      finished = true
+      signal.removeEventListener('abort', abort)
+      if (--active.users === 0 && pending.get(key) === active) {
+        pending.delete(key)
+        active.controller.abort()
+      }
+      if (blob) resolve(blob)
+      else reject(error)
+    }
+    const abort = () => finish(undefined, new DOMException('aborted', 'AbortError'))
+    signal.addEventListener('abort', abort, { once: true })
+    active.promise.then((blob) => finish(blob), (error) => finish(undefined, error))
+  })
+}
+
+/** 静默准备，不播放、不改变当前朗读；后台失败留给正式播放的回退处理。 */
+export async function prefetchKana(req: SpeakRequest, signal: AbortSignal): Promise<void> {
+  if (!ttsEnabled() || signal.aborted) return
+  try {
+    if (getEnginePref() === 'voicevox' && (Date.now() >= voicevoxDownUntil || cache.has(cacheKey(req)))) {
+      await voicevoxAudio(req, signal)
+    } else {
+      await prepareWebSpeech()
+    }
+  } catch {
+    // 预取失败不影响答题，也不提前播报答案。
+  }
 }
 
 const voicevoxProvider: TtsProvider = {
@@ -100,22 +183,8 @@ const voicevoxProvider: TtsProvider = {
   label: 'VOICEVOX',
   detail: () => `音色 ${getVoicevoxSpeaker()}`,
   async speak(req, signal) {
-    const key = cacheKey(req)
-    let blob = cache.get(key)
-    if (blob) {
-      cache.delete(key)
-    } else {
-      try {
-        blob = await voicevoxSynthesize(req, signal)
-      } catch (e) {
-        if (!isAbort(e)) voicevoxDownUntil = Date.now() + RETRY_AFTER_MS
-        throw e
-      }
-      if (signal.aborted) return
-    }
-    cache.set(key, blob)
-    if (cache.size > CACHE_MAX) cache.delete(cache.keys().next().value as string)
-    await playBlob(blob, signal)
+    const blob = await voicevoxAudio(req, signal)
+    if (!signal.aborted) await playBlob(blob, signal)
   },
 }
 
@@ -160,6 +229,12 @@ export async function speakKana(req: SpeakRequest): Promise<void> {
   note = errors.join('；')
   setStatus({ engine: null, label: '', note })
   throw new Error(note)
+}
+
+/** 按当前语速朗读完整日语句子。 */
+export function speakText(id: string, text: string): Promise<void> {
+  if (!ttsEnabled()) return Promise.resolve()
+  return speakKana({ wordId: id, kana: text, speed: getSpeed() })
 }
 
 /** 朗读词条的读音：用词表假名（或手动纠正后的假名），不让引擎自己判断汉字读法。 */

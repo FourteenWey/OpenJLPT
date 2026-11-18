@@ -39,6 +39,6 @@ JMdict ID 与其他写法，以及每词最多 1 条例句（日文原句、英�
 
 ## 本项目的修改
 
-- 取自 `data/json/vocab/n3.json`、`n4.json`、`n5.json`，字段改名（`jmdict_id` → `jmdictId`、`other_forms` → `otherForms`、`examples` → 单条 `example`），丢弃 `romaji` 与例句注音。
-- 例句只保留第 1 条通过读音核对的句子；同一词形在 N5–N3 里有不同读音的词，只保留注音能确认读音一致的例句。
+- 取自 `data/json/vocab/` 下的 `n1.json` 到 `n5.json`，字段改名（`jmdict_id` → `jmdictId`、`other_forms` → `otherForms`、`examples` → 单条 `example`），丢弃 `romaji` 与例句注音。
+- 例句保留第 1 条通过读音核对的句子。N3–N5 的多音词在这三个级别内比较，N1 和 N2 的多音词在全部五个级别内比较，只保留注音能确认读音一致的例句。
 - 生成脚本：`scripts/fetch-openjlpt.mjs`。

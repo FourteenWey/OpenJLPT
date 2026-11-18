@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { Grade, Word, Wordlist } from '../types'
 import { GRADE_LABEL } from '../types'
+import { selectWordlist } from '../db/builtin'
 import { getSetting, putSetting } from '../db/db'
 import { getWords, getWordlist, listWordlists } from '../db/wordlists'
 import { speakWord, stopSpeaking } from '../lib/tts'
@@ -57,7 +58,7 @@ export function ListenScreen() {
   useEffect(() => {
     listWordlists(db).then((l) => {
       setLists(l)
-      if (l[0]) setListId(l[0].id)
+      setListId(selectWordlist(l)?.id ?? '')
     }).catch((e) => setMsg(errText(e)))
     return stopSpeaking
   }, [db])

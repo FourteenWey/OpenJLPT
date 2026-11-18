@@ -50,6 +50,15 @@ export function pickJaVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoic
 
 let voiceName = ''
 
+/** 提前加载本地声音；Web Speech 不提供离线合成音频的接口。 */
+export async function prepareWebSpeech(): Promise<SpeechSynthesisVoice> {
+  const s = synth()
+  if (!s || typeof SpeechSynthesisUtterance === 'undefined') throw new Error('此浏览器不支持 Web Speech 朗读')
+  const voice = pickJaVoice(await loadVoices(s))
+  if (!voice) throw new Error('没有找到本地日语声音（ja-JP）。请在系统设置里安装日语语音；为避免上传数据，不使用在线声音。')
+  return voice
+}
+
 export const webSpeechProvider: TtsProvider = {
   id: 'webspeech',
   label: '系统 TTS',
@@ -57,8 +66,7 @@ export const webSpeechProvider: TtsProvider = {
   async speak(req, signal) {
     const s = synth()
     if (!s || typeof SpeechSynthesisUtterance === 'undefined') throw new Error('此浏览器不支持 Web Speech 朗读')
-    const voice = pickJaVoice(await loadVoices(s))
-    if (!voice) throw new Error('没有找到本地日语声音（ja-JP）。请在系统设置里安装日语语音；为避免上传数据，不使用在线声音。')
+    const voice = await prepareWebSpeech()
     voiceName = voice.name
     if (signal.aborted) return
     const u = new SpeechSynthesisUtterance(req.kana)

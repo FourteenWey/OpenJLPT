@@ -67,16 +67,21 @@ export function summarizeBaseline(session: Session, baselines: Map<string, Basel
   const complete = rated === session.sampleSize
   let inference: Inference = 'none'
   let note = ''
+  const grammar = session.subject === 'grammar'
+  const frameLabel = grammar ? '语法库' : '词表'
+  const unit = grammar ? '个语法点' : '词'
   if (session.mode === 'census') {
     inference = complete ? 'census' : 'none'
-    note = complete ? '全量普查：结果就是该词表的实际比例，没有抽样误差。' : '普查尚未完成，比例只代表已答的词，不作总体估计。'
+    note = complete
+      ? `全量普查：结果就是该${frameLabel}的实际比例，没有抽样误差。`
+      : `普查尚未完成，比例只代表已答的${grammar ? '语法点' : '词'}，不作总体估计。`
   } else if (session.frameType === 'curated') {
-    note = '样本框是人工挑选的词表，结果只描述这些词，不推断总体掌握率。'
+    note = `样本框是人工挑选的${frameLabel}，结果只描述这些${grammar ? '语法点' : '词'}，不推断总体掌握率。`
   } else if (!complete) {
     note = '随机样本尚未答完，暂不给出总体估计。'
   } else {
     inference = 'ci'
-    note = `随机样本（种子 ${session.seed}，无放回，n=${session.sampleSize}，样本框 ${session.frameSize} 词）；区间为 95% Wilson，已做有限总体校正，只适用于该样本框。`
+    note = `随机样本（种子 ${session.seed}，无放回，n=${session.sampleSize}，样本框 ${session.frameSize} ${unit}）；区间为 95% Wilson，已做有限总体校正，只适用于该样本框。`
   }
   const ci = inference === 'ci'
   const total = durations.reduce((s, d) => s + d, 0)

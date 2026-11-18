@@ -3,8 +3,11 @@
 /** A=确定掌握（键 A），B=模糊记得（键 S），C=不认识（键 D）。 */
 export type Grade = 'A' | 'B' | 'C'
 
+export type StudySubject = 'vocabulary' | 'grammar'
+export type JlptLevel = `N${1 | 2 | 3 | 4 | 5}`
+
 /** 每个级别有独立样本框，累计词表和自定义词表也各自统计。 */
-export type Scope = `N${1 | 2 | 3 | 4 | 5}-only` | 'N5-N3-cumulative' | 'custom'
+export type Scope = `${JlptLevel}-only` | 'N5-N3-cumulative' | 'custom'
 
 /** complete=词表即完整样本框；curated=人为挑选，不做总体估计。 */
 export type FrameType = 'complete' | 'curated'
@@ -54,11 +57,19 @@ export interface Wordlist {
   source: WordlistSource
 }
 
+export type StudyFrame = Pick<Wordlist, 'id' | 'name' | 'scope' | 'frameType' | 'wordIds'>
+
 export type SessionStatus = 'active' | 'paused' | 'completed'
 
 /** 首次基线测试会话。order 保存抽样/洗牌后的完整顺序，用于断点恢复。 */
 export interface Session {
   id: string
+  /** 旧会话缺省为词汇。 */
+  subject?: StudySubject
+  /** 语法单选按会话计分，旧语法会话仍使用首评。 */
+  grammarQuiz?: boolean
+  /** 已提交答案、尚未离开解析页的语法点。 */
+  quizFeedback?: { wordId: string; attemptId: string }
   mode: 'sample' | 'census'
   wordlistId: string
   wordlistName: string
@@ -86,23 +97,26 @@ export interface Session {
 
 export interface Attempt {
   id: string
+  subject?: StudySubject
   /** 单调递增序号，用于确定「上一步」，避免同一毫秒内的并列 */
   seq: number
-  kind: 'baseline' | 'review'
+  kind: 'baseline' | 'review' | 'grammar-quiz'
   /** 基线会话 ID；复习为 'review' */
   sessionId: string
   wordId: string
   grade: Grade
+  /** 语法单选实际选中的文本。 */
+  choice?: string
   /** 复习时作答前所处的阶段 */
   stage?: number
   answeredAt: string
-  /** 从出题到按下 Space 的有效毫秒数，未显示答案为 0 */
+  /** 从出题到显示答案的有效毫秒数，未显示答案为 0 */
   revealMs: number
   /** 从出题到评级的有效毫秒数 */
   durationMs: number
   /** 被撤销的记录保留在日志中，但不参与统计 */
   revoked?: boolean
-  /** 复习作答前的队列状态，撤销时据此还原 */
+  /** 复习或语法快筛作答前的队列状态，撤销时据此还原；无值表示当时尚未入队。 */
   prev?: ReviewItem
 }
 

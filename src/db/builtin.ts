@@ -20,15 +20,17 @@ export const BUILTIN_IDS: Record<BuiltinKind, string> = {
 export const BUILTIN_NAMES: Record<BuiltinKind, string> = {
   n1: 'OpenJLPT N1',
   n2: 'OpenJLPT N2',
-  n3: 'OpenJLPT N3（仅 N3，不含 N4/N5）',
+  n3: 'OpenJLPT N3',
   n4: 'OpenJLPT N4',
   n5: 'OpenJLPT N5',
   cumulative: 'OpenJLPT N5–N3 累计',
 }
 
+const LEGACY_N3_NAME = 'OpenJLPT N3（仅 N3，不含 N4/N5）'
+
 const filesFor = (kind: BuiltinKind): BuiltinLevel[] => kind === 'cumulative' ? ['n5', 'n4', 'n3'] : [kind]
 
-export function selectWordlist(lists: Wordlist[], id = BUILTIN_IDS.n3): Wordlist | undefined {
+export function selectWordlist<T extends Pick<Wordlist, 'id'>>(lists: T[], id?: string): T | undefined {
   return lists.find((list) => list.id === id) ?? lists.find((list) => list.id === BUILTIN_IDS.n3) ?? lists[0]
 }
 
@@ -87,59 +89,91 @@ export async function refreshBuiltinWords(
   return plan.updatedWords.length
 }
 
+interface BuiltinResult {
+  list: Wordlist
+  created: boolean
+  report?: ImportReport
+}
+
+async function installBuiltins(
+  db: IDBDatabase,
+  kinds: readonly BuiltinKind[],
+  fetcher: JsonFetcher,
+  base: string,
+): Promise<BuiltinResult[]> {
+  if (!kinds.length) return []
+  const [source, entries] = await Promise.all([
+    fetcher(`${base}data/openjlpt-source.json`) as Promise<SourceInfo>,
+    Promise.all(kinds.map((kind) => loadRaw(filesFor(kind), fetcher, base))),
+  ])
+  return run(db, ['words', 'wordlists'], 'readwrite', async (tx) => {
+    const lists = tx.objectStore('wordlists')
+    const words = (await req(tx.objectStore('words').getAll())) as Word[]
+    const installed: BuiltinResult[] = []
+    for (const [index, kind] of kinds.entries()) {
+      const id = BUILTIN_IDS[kind]
+      const current = (await req(lists.get(id))) as Wordlist | undefined
+      if (current) {
+        installed.push({ list: current, created: false })
+        continue
+      }
+
+      const plan = planImport(entries[index], words)
+      const list: Wordlist = {
+        id,
+        name: BUILTIN_NAMES[kind],
+        scope: kind === 'cumulative' ? 'N5-N3-cumulative' : `${kind.toUpperCase() as Uppercase<BuiltinLevel>}-only`,
+        frameType: 'complete',
+        wordIds: plan.wordIds,
+        createdAt: new Date().toISOString(),
+        source: {
+          label: 'OpenJLPT',
+          url: source.repository,
+          version: `${source.version} @ ${source.commit.slice(0, 7)}`,
+          license: 'CC BY-SA 4.0',
+          attribution: ATTRIBUTION,
+        },
+      }
+      await saveImport(tx, list, plan)
+      words.push(...plan.newWords)
+      installed.push({ list, created: true, report: plan.report })
+    }
+    return installed
+  })
+}
+
 export async function ensureBuiltin(
   db: IDBDatabase,
   kind: BuiltinKind,
   fetcher: JsonFetcher = defaultFetcher,
   base: string = import.meta.env.BASE_URL,
-): Promise<{ list: Wordlist; created: boolean; report?: ImportReport }> {
-  const id = BUILTIN_IDS[kind]
-  const existing = await getWordlist(db, id)
+): Promise<BuiltinResult> {
+  const existing = await getWordlist(db, BUILTIN_IDS[kind])
   if (existing) return { list: existing, created: false }
-
-  const files = filesFor(kind)
-  const [source, raw] = await Promise.all([
-    fetcher(`${base}data/openjlpt-source.json`) as Promise<SourceInfo>,
-    loadRaw(files, fetcher, base),
-  ])
-  const result = await run(db, ['words', 'wordlists'], 'readwrite', async (tx) => {
-    const current = (await req(tx.objectStore('wordlists').get(id))) as Wordlist | undefined
-    if (current) return { list: current, created: false }
-
-    const words = (await req(tx.objectStore('words').getAll())) as Word[]
-    const plan = planImport(raw, words)
-    const list: Wordlist = {
-      id,
-      name: BUILTIN_NAMES[kind],
-      scope: kind === 'cumulative' ? 'N5-N3-cumulative' : `${kind.toUpperCase() as Uppercase<BuiltinLevel>}-only`,
-      frameType: 'complete',
-      wordIds: plan.wordIds,
-      createdAt: new Date().toISOString(),
-      source: {
-        label: 'OpenJLPT',
-        url: source.repository,
-        version: `${source.version} @ ${source.commit.slice(0, 7)}`,
-        license: 'CC BY-SA 4.0',
-        attribution: ATTRIBUTION,
-      },
-    }
-    await saveImport(tx, list, plan)
-    return { list, created: true, report: plan.report }
-  })
-  if (result.created && files.includes('n3')) await applyGeneratedZh(db, fetcher, base)
+  const [result] = await installBuiltins(db, [kind], fetcher, base)
+  if (result.created && filesFor(kind).includes('n3')) await applyGeneratedZh(db, fetcher, base)
   return result
 }
 
 /** 首次启动或打开旧备份时补齐五个分级词表。之后可以在数据页管理词表。 */
 export async function prepareBuiltinWordlists(db: IDBDatabase): Promise<void> {
   const lists = await listWordlists(db)
+  if (lists.some((list) => list.id === BUILTIN_IDS.n3 && list.name === LEGACY_N3_NAME)) {
+    await run(db, ['wordlists'], 'readwrite', async (tx) => {
+      const store = tx.objectStore('wordlists')
+      const n3 = (await req(store.get(BUILTIN_IDS.n3))) as Wordlist | undefined
+      if (n3?.name === LEGACY_N3_NAME) await req(store.put({ ...n3, name: BUILTIN_NAMES.n3 }))
+    })
+  }
   if (lists.length) await refreshBuiltinWords(db).catch(() => 0)
+  const base = import.meta.env.BASE_URL
   if (!(await getSetting<boolean>(db, 'builtinLevelsInstalled'))) {
-    for (const level of LEVELS) await ensureBuiltin(db, level)
+    const loaded = new Set(lists.map((list) => list.id))
+    await installBuiltins(db, LEVELS.filter((level) => !loaded.has(BUILTIN_IDS[level])), defaultFetcher, base)
     if (!lists.length) await putSetting(db, 'builtinDataRev', DATA_REV)
     await putSetting(db, 'builtinLevelsInstalled', true)
   } else if (!lists.length) {
-    await ensureBuiltin(db, 'n3')
+    await installBuiltins(db, ['n3'], defaultFetcher, base)
   }
   await applyGeneratedZh(db)
 }

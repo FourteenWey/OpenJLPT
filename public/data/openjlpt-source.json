@@ -6,6 +6,6 @@
   "license": "CC-BY-SA-4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
   "upstream": "JMdict and KANJIDIC2 (EDRDG), Jonathan Waller JLPT lists (tanos.co.uk), Tatoeba",
-  "levelNote": "每个词只出现在列出它的最简单级别，因此 N3 文件是 N3-only，不含 N4/N5。",
+  "levelNote": "每个词只出现在列出它的最简单级别。N1–N5 各自为独立词表。",
   "fetchedFrom": "https://raw.githubusercontent.com/evanclan/OpenJLPT/0d1d3410bec90bd4098a7c72de820543cb4f707c/data/json/vocab/"
 }

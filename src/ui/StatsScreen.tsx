@@ -16,16 +16,16 @@ export function StatsScreen({ initialId }: { initialId?: string }) {
   const { db, version } = useApp()
   const [picked, setPicked] = useState(initialId ?? '')
   const { data, error } = useLoad(async () => {
-    const sessions = await listSessions(db)
+    const sessions = await listSessions(db, 'vocabulary')
     const s = sessions.find((x) => x.id === picked) ?? sessions[0]
-    const [base, attempts, items] = await Promise.all([getBaselineMap(db), getAllAttempts(db), listReviewItems(db)])
+    const [base, attempts, items] = await Promise.all([getBaselineMap(db), getAllAttempts(db, 'vocabulary'), listReviewItems(db)])
     const words = s ? await getWords(db, s.order) : []
     return { sessions, s, base, attempts, items, words }
   }, [db, version, picked])
 
   if (!data) return <p className="muted pad">{error || '加载中…'}</p>
   const { sessions, s, base, attempts, items, words } = data
-  if (!s) return <p className="pad">还没有基线测试数据。先在「快筛」里开始一次抽样或普查。</p>
+  if (!s) return <p className="pad">还没有基线测试数据。先在「单词」页开始一次抽样或普查。</p>
 
   const sum = summarizeBaseline(s, base)
   const retention = summarizeRetention(attempts)
@@ -49,7 +49,7 @@ export function StatsScreen({ initialId }: { initialId?: string }) {
       </label>
 
       <section className="block">
-        <h2>首次基线 <span className={`badge scope-${s.scope}`}>{scopeLabel}</span></h2>
+        <h2>首次基线{!s.scope.endsWith('-only') && <> <span className={`badge scope-${s.scope}`}>{scopeLabel}</span></>}</h2>
         <p className="muted small">
           样本框：{s.wordlistName}（{s.frameSize} 词，{FRAME_LABEL[s.frameType]}，指纹 {s.frameHash}）· {s.mode === 'sample' ? `随机抽样 n=${s.sampleSize}，种子 ${s.seed}` : `全量普查，随机顺序种子 ${s.seed}`} · 抽取于 {fmtTime(s.drawnAt)}
           · 测试条件：{s.hint === 'example' ? '词形 + 例句提示（有例句的词；掌握率可能比只看词形偏高）' : '只显示词形'}

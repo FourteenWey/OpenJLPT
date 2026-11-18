@@ -78,10 +78,11 @@ const HINT: Record<Grade, string> = {
 
 interface GradeBarProps {
   enabled: boolean
+  grammar?: boolean
   onGrade: (g: Grade) => void
 }
 
-export function GradeBar({ enabled, onGrade }: GradeBarProps) {
+export function GradeBar({ enabled, grammar, onGrade }: GradeBarProps) {
   return (
     <div className="grades" role="group" aria-label="评级">
       {(['A', 'B', 'C'] as Grade[]).map((g) => (
@@ -97,7 +98,7 @@ export function GradeBar({ enabled, onGrade }: GradeBarProps) {
         >
           <kbd>{GRADE_KEY[g]}</kbd>
           <strong>{GRADE_LABEL[g]}</strong>
-          <small>{HINT[g]}</small>
+          <small>{grammar && g === 'A' ? '能独立回忆句型、接续和用法' : HINT[g]}</small>
         </button>
       ))}
     </div>

@@ -1,12 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import { BACKUP_FORMAT, exportBackup, restoreBackup, validateBackup } from '../src/db/backup'
 import { BUILTIN_IDS, ensureBuiltin } from '../src/db/builtin'
+import { openDb, req } from '../src/db/db'
 import { getAllAttempts, getBaselineMap } from '../src/db/queries'
 import { rateBaseline } from '../src/db/rating'
 import { listReviewItems, rateReview } from '../src/db/review'
-import { createSession, listSessions } from '../src/db/sessions'
+import { createSession, listSessions, resumeSession } from '../src/db/sessions'
 import { getAllWords, listWordlists } from '../src/db/wordlists'
-import { fsFetcher, freshDb } from './helpers'
+import { fsFetcher, freshDb, uniqueDbName } from './helpers'
 
 describe('JSON 备份与恢复', () => {
   async function populated() {
@@ -44,6 +45,39 @@ describe('JSON 备份与恢复', () => {
     await restoreBackup(other, file)
     expect(await getAllWords(other)).toHaveLength(1659)
     expect((await listWordlists(other)).map((l) => l.id)).toEqual([BUILTIN_IDS.n3])
+  })
+
+  it('升级现有数据库并兼容旧备份；新版备份保留语法首评', async () => {
+    const name = uniqueDbName()
+    const legacyRequest = indexedDB.open(name, 1)
+    legacyRequest.onupgradeneeded = () => {
+      legacyRequest.result.createObjectStore('baselines', { keyPath: 'wordId' }).put({ wordId: 'old-word', grade: 'A' })
+      legacyRequest.result.createObjectStore('attempts', { keyPath: 'id' }).createIndex('bySession', 'sessionId')
+    }
+    const legacy = await req(legacyRequest)
+    legacy.close()
+    const db = await openDb(name)
+    const backup = await exportBackup(db)
+    const { grammarBaselines: unused, ...legacyData } = backup.data
+    expect(unused).toEqual([])
+    const oldFile = { ...backup, version: 1, data: legacyData }
+    expect((await getBaselineMap(db)).get('old-word')?.grade).toBe('A')
+
+    const s = await createSession(db, { subject: 'grammar', wordlistId: 'jlpt-grammar-n5', mode: 'sample', sampleSize: 1, seed: 42 })
+    const overlapping = await createSession(db, { subject: 'grammar', wordlistId: s.wordlistId, mode: 'sample', sampleSize: 2, seed: 42 })
+    await rateBaseline(db, { sessionId: s.id, wordId: s.order[0], grade: 'B', revealMs: 10, durationMs: 20 })
+    expect(await resumeSession(db, overlapping.id)).toMatchObject({ cursor: 1, status: 'active' })
+    const next = await createSession(db, { subject: 'grammar', wordlistId: s.wordlistId, mode: 'sample', sampleSize: 1, seed: 42 })
+    expect(next).toMatchObject({ preRated: 1, status: 'completed', order: s.order })
+    const target = await freshDb()
+    await restoreBackup(target, await exportBackup(db))
+    expect((await getBaselineMap(target, 'grammar')).get(s.order[0])?.grade).toBe('B')
+    expect(await listSessions(target, 'vocabulary')).toEqual([])
+    await restoreBackup(target, oldFile)
+    expect((await getBaselineMap(target, 'grammar')).size).toBe(0)
+    expect((await getBaselineMap(target)).get('old-word')?.grade).toBe('A')
+    db.close()
+    target.close()
   })
 
   it('结构非法的备份被拒绝，且不会清空现有数据', async () => {

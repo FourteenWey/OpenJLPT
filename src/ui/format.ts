@@ -1,4 +1,5 @@
 import type { Interval } from '../lib/stats'
+import type { Scope } from '../types'
 
 export function fmtMs(ms: number): string {
   if (ms < 60_000) return `${(ms / 1000).toFixed(1)} 秒`
@@ -25,5 +26,13 @@ export function downloadText(filename: string, text: string, mime = 'text/csv;ch
   setTimeout(() => URL.revokeObjectURL(url), 1000)
 }
 
-export const SCOPE_LABEL = { 'N3-only': '仅 N3', 'N5-N3-cumulative': 'N5–N3 累计', custom: '自定义' } as const
+export const SCOPE_LABEL: Record<Scope, string> = {
+  'N1-only': '仅 N1',
+  'N2-only': '仅 N2',
+  'N3-only': '仅 N3',
+  'N4-only': '仅 N4',
+  'N5-only': '仅 N5',
+  'N5-N3-cumulative': 'N5–N3 累计',
+  custom: '自定义',
+}
 export const FRAME_LABEL = { complete: '完整词表', curated: '人工挑选' } as const

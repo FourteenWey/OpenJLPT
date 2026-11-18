@@ -1,6 +1,8 @@
 // IndexedDB 基础封装：打开数据库、事务辅助、设置读写。
+import { ensureGrammarReview } from './grammarMigration'
+
 export const DB_NAME = 'jlpt-vocab-scanner'
-export const DB_VERSION = 1
+export const DB_VERSION = 3
 
 export const STORE_KEYS = {
   wordlists: 'id',
@@ -8,7 +10,9 @@ export const STORE_KEYS = {
   sessions: 'id',
   attempts: 'id',
   baselines: 'wordId',
+  grammarBaselines: 'wordId',
   reviewItems: 'wordId',
+  grammarReviewItems: 'wordId',
   settings: 'key',
 } as const
 
@@ -33,14 +37,28 @@ function txDone(tx: IDBTransaction): Promise<void> {
 export function openDb(name: string = DB_NAME): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
     const open = indexedDB.open(name, DB_VERSION)
+    let blocked = false
+    open.onblocked = () => {
+      blocked = true
+      reject(new Error('请关闭仍在使用旧版数据库的页面，然后刷新'))
+    }
     open.onupgradeneeded = () => {
       const db = open.result
       for (const store of STORE_NAMES) {
+        if (db.objectStoreNames.contains(store)) continue
         const os = db.createObjectStore(store, { keyPath: STORE_KEYS[store] })
         if (store === 'attempts') os.createIndex('bySession', 'sessionId')
       }
     }
-    open.onsuccess = () => resolve(open.result)
+    open.onsuccess = () => {
+      const db = open.result
+      if (blocked) {
+        db.close()
+        return
+      }
+      db.onversionchange = () => db.close()
+      ensureGrammarReview(db).then(() => resolve(db), (error) => { db.close(); reject(error) })
+    }
     open.onerror = () => reject(open.error)
   })
 }
