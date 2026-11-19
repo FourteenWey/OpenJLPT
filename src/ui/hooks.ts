@@ -10,8 +10,9 @@ export function useHotkeys(map: Record<string, Handler | undefined>, enabled = t
     if (!enabled) return
     const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement | null
-      if (t && (t.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(t.tagName))) return
-      if (e.repeat || e.altKey || e.isComposing) return
+      if (e.defaultPrevented || e.repeat || e.altKey || e.isComposing || document.querySelector('dialog[open]')) return
+      if (t?.isContentEditable || t?.closest?.('input, textarea, select')) return
+      if (e.code === 'Space' && t?.closest?.('button, summary, a[href]')) return
       const name = `${e.metaKey || e.ctrlKey ? 'Mod+' : ''}${e.shiftKey ? 'Shift+' : ''}${e.code}`
       const handler = ref.current[name]
       if (!handler) return

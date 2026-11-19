@@ -2,6 +2,7 @@ import type { Example, Grade, Word } from '../types'
 import { GRADE_KEY, GRADE_LABEL } from '../types'
 import { splitAtWord } from '../lib/example'
 import { zhGloss } from '../lib/gloss'
+import { BookmarkButton } from './BookmarkControls'
 import { PronPanel } from './PronPanel'
 
 const POS_ZH: Record<string, string> = {
@@ -38,19 +39,23 @@ interface CardProps {
   badge?: string
   /** 在词形下方显示例句（读音提示） */
   showExample?: boolean
+  onReveal?: () => void
+  onResume?: () => void
+  onBookmarkDialogChange?: (open: boolean) => void
+  disabled?: boolean
   /** 提供时，翻面后显示发音按钮 */
   onSpeak?: () => void
 }
 
-export function Card({ word, revealed, masked, badge, showExample, onSpeak }: CardProps) {
+export function Card({ word, revealed, masked, badge, showExample, onReveal, onResume, disabled, onSpeak, onBookmarkDialogChange }: CardProps) {
   const zh = zhGloss(word)
   return (
     <section className="card" aria-live="polite">
       {badge && <div className="card-badge">{badge}</div>}
-      <div className="card-word" lang="ja">{masked ? '已暂停' : word.word}</div>
+      <div className="card-word" lang={masked ? undefined : 'ja'}>{masked ? '已暂停' : word.word}</div>
       {!masked && showExample && word.example && <ExampleLine word={word} example={word.example} />}
       {masked ? (
-        <div className="card-hint">按 <kbd>Space</kbd> 或 <kbd>P</kbd> 继续</div>
+        <button className="primary" onClick={onResume} disabled={disabled}>继续练习 <kbd>Space</kbd></button>
       ) : revealed ? (
         <div className="card-answer">
           <div className="card-reading" lang="ja">{word.reading}</div>
@@ -62,10 +67,14 @@ export function Card({ word, revealed, masked, badge, showExample, onSpeak }: Ca
             </div>
           )}
           {word.pos.length > 0 && <div className="card-pos">{posLabels(word.pos).join(' · ')}</div>}
+          <BookmarkButton subject="vocabulary" itemId={word.id} label={word.word} disabled={disabled} onDialogChange={onBookmarkDialogChange} />
         </div>
       ) : (
-        <div className="card-hint">先回忆读音与词义，再按 <kbd>Space</kbd> 显示答案</div>
+        <div className="card-hint">先回忆读音与词义</div>
       )}
+      {!masked && !revealed && <div className="study-actions reveal-actions">
+        <button className="primary" onClick={onReveal} disabled={disabled}>显示答案 <kbd>Space</kbd></button>
+      </div>}
     </section>
   )
 }
@@ -90,14 +99,10 @@ export function GradeBar({ enabled, grammar, onGrade }: GradeBarProps) {
           key={g}
           className={`grade grade-${g}`}
           disabled={!enabled}
-          tabIndex={-1}
-          onClick={(e) => {
-            e.currentTarget.blur()
-            onGrade(g)
-          }}
+          onClick={() => onGrade(g)}
         >
           <kbd>{GRADE_KEY[g]}</kbd>
-          <strong>{GRADE_LABEL[g]}</strong>
+          <strong>{g === 'A' ? '确定掌握' : g === 'B' ? '模糊记得' : GRADE_LABEL[g]}</strong>
           <small>{grammar && g === 'A' ? '能独立回忆句型、接续和用法' : HINT[g]}</small>
         </button>
       ))}

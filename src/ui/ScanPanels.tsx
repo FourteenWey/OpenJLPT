@@ -3,16 +3,13 @@ import type { Attempt, Word } from '../types'
 import { GRADE_KEY, GRADE_LABEL } from '../types'
 import { grammarById } from '../lib/grammar'
 import { fmtMs, fmtTime } from './format'
+import { StudyDialog } from './StudyDialog'
 
 export function HistoryDrawer({ log, words, onClose }: { log: Attempt[]; words: Map<string, Word>; onClose: () => void }) {
   const rows = [...log].sort((a, b) => b.seq - a.seq)
   return (
-    <aside className="drawer" aria-label="作答历史">
-      <header>
-        <strong>作答历史</strong>
-        <span className="muted">{rows.filter((r) => !r.revoked).length} 条有效</span>
-        <button className="link" onClick={onClose}>关闭 (Esc)</button>
-      </header>
+    <StudyDialog title="作答历史" className="history-dialog" onClose={onClose} closeOn={(e) => e.code === 'KeyH'}>
+      <p className="muted">{rows.filter((r) => !r.revoked).length} 条有效记录</p>
       {rows.length === 0 && <p className="muted pad">还没有作答记录。</p>}
       <ol className="history">
         {rows.map((a) => {
@@ -29,7 +26,7 @@ export function HistoryDrawer({ log, words, onClose }: { log: Attempt[]; words: 
           )
         })}
       </ol>
-    </aside>
+    </StudyDialog>
   )
 }
 
@@ -43,16 +40,18 @@ export function JumpBox({ total, current, grammar, quiz, onJump, onClose }: { to
     if (Number.isInteger(n) && n >= 1 && n <= total) onJump(n)
   }
   return (
-    <form className="modal" onSubmit={submit} onKeyDown={(e) => e.key === 'Escape' && onClose()}>
-      <label>
-        跳转到第几个（1–{total}）。{quiz ? '已答过的题目会自动跳过。' : `若${grammar ? '该语法点' : '该词'}已评过，会落在其后最近的未评项。`}
-        <input ref={input} type="number" min={1} max={total} value={value} onChange={(e) => setValue(e.target.value)} />
-      </label>
-      <div className="row">
-        <button type="submit" className="primary">跳转 (Enter)</button>
-        <button type="button" onClick={onClose}>取消 (Esc)</button>
-      </div>
-    </form>
+    <StudyDialog title="跳转题目" onClose={onClose}>
+      <form className="form" onSubmit={submit}>
+        <label>
+          跳转到第几个（1–{total}）。{quiz ? '已答过的题目会自动跳过。' : `若${grammar ? '该语法点' : '该词'}已评过，会落在其后最近的未评项。`}
+          <input ref={input} data-dialog-focus type="number" inputMode="numeric" min={1} max={total} value={value} onChange={(e) => setValue(e.target.value)} />
+        </label>
+        <div className="row">
+          <button type="submit" className="primary">跳转</button>
+          <button type="button" onClick={onClose}>取消</button>
+        </div>
+      </form>
+    </StudyDialog>
   )
 }
 
@@ -77,7 +76,7 @@ export function HelpSheet({ onClose, grammar, quiz }: { onClose: () => void; gra
     ['D', '不认识：想不起来或记错'],
   ]
   return (
-    <div className="modal" role="dialog" aria-label="快捷键">
+    <StudyDialog title="快捷键" onClose={onClose} closeOn={(e) => e.shiftKey && e.code === 'Slash'}>
       <table className="keys">
         <tbody>
           {[...answerKeys, ...SESSION_KEYS].map(([k, d]) => (
@@ -86,7 +85,6 @@ export function HelpSheet({ onClose, grammar, quiz }: { onClose: () => void; gra
         </tbody>
       </table>
       {!quiz && <p className="muted">先按 Space 核对答案，再评级；评级后自动进入下一项。</p>}
-      <button onClick={onClose}>关闭 (Esc)</button>
-    </div>
+    </StudyDialog>
   )
 }

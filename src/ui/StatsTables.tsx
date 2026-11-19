@@ -6,7 +6,7 @@ export function DimTable({ title, rows, note }: { title: string; rows: DimRow[];
   return (
     <section className="block">
       <h3>{title}</h3>
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0} role="region" aria-label={title}>
         <table>
           <thead>
             <tr><th>类别</th><th>词数</th><th>A 掌握</th><th>B 模糊</th><th>C 不认识</th><th>A 占比</th></tr>

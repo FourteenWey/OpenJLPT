@@ -72,7 +72,7 @@ export function DataScreen({ subject = 'vocabulary' }: { subject?: StudySubject 
           which uses JMdict and KANJIDIC2 (EDRDG), Jonathan Waller's JLPT lists (tanos.co.uk), and Tatoeba (example sentences, CC BY 2.0 FR).
           JLPT 级别是社区整理的非官方近似，官方并未公布考试词表。完整署名见项目内 NOTICE.md。
         </p>
-        <p className="small">朗读语音：默认为系统本地 TTS；选用 VOICEVOX 时为顶栏所选角色的声音（默认 VOICEVOX:もち子(cv 明日葉よもぎ)，由本机 VOICEVOX Engine 合成）；公开发布生成的音频时，请按所选角色的规约署名。</p>
+        <p className="small">朗读默认使用系统本地语音。使用 VOICEVOX 时，角色可在「更多」中选择（默认 もち子，声优 明日葉よもぎ，由本机 VOICEVOX Engine 合成）。公开发布生成的音频时，请按所选角色的规约署名。</p>
         <p className="small">内置语法点与级别整理自手机应用「语法题列表」（shiri.jp），题干、选项与中文解析由本项目编写。</p>
       </section>
     </div>

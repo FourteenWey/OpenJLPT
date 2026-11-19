@@ -16,10 +16,6 @@ export function PronPanel({ word, onSpeak }: Props) {
   const [accent, setAccent] = useState('')
   const [err, setErr] = useState('')
   const p = resolvePronunciation(word)
-  const blur = (fn: () => void) => (e: { currentTarget: HTMLElement }) => {
-    e.currentTarget.blur()
-    fn()
-  }
 
   const open = () => {
     const o = getOverride(word.id)
@@ -48,8 +44,8 @@ export function PronPanel({ word, onSpeak }: Props) {
   return (
     <div className="pron">
       <div className="row center">
-        <button className="speak" tabIndex={-1} onClick={blur(onSpeak)}>▶ 发音 <kbd>R</kbd></button>
-        <button className="link" tabIndex={-1} onClick={blur(open)}>校正读音</button>
+        <button className="speak" onClick={onSpeak}>▶ 发音 <kbd>R</kbd></button>
+        <button className="link" onClick={open}>校正读音</button>
       </div>
       {(p.readingOverridden || p.accentStatus === 'user') && (
         <div className="small muted">

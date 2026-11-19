@@ -1,9 +1,11 @@
 // 完整 JSON 备份与恢复。恢复会整体替换现有数据，并在单个事务里完成。
 import { STORE_KEYS, STORE_NAMES, req, run, type StoreName } from './db'
+import { bookmarkId } from './bookmarks'
 import { backfillGrammarReview, GRAMMAR_MIGRATION_KEY } from './grammarMigration'
+import type { Bookmark } from '../types'
 
 export const BACKUP_FORMAT = 'jlpt-vocab-scanner-backup'
-export const BACKUP_VERSION = 3
+export const BACKUP_VERSION = 4
 
 export interface BackupFile {
   format: typeof BACKUP_FORMAT
@@ -24,12 +26,13 @@ export async function exportBackup(db: IDBDatabase, now: Date = new Date()): Pro
 export function validateBackup(input: unknown): { file: BackupFile; counts: Record<StoreName, number> } {
   const file = input as Partial<BackupFile> | null
   if (!file || typeof file !== 'object' || file.format !== BACKUP_FORMAT) throw new Error('不是本工具导出的备份文件')
-  if (file.version !== 1 && file.version !== 2 && file.version !== BACKUP_VERSION) throw new Error(`不支持的备份版本：${String(file.version)}`)
+  if (file.version !== 1 && file.version !== 2 && file.version !== 3 && file.version !== BACKUP_VERSION) throw new Error(`不支持的备份版本：${String(file.version)}`)
   if (!file.data || typeof file.data !== 'object') throw new Error('备份文件缺少 data')
   const counts = {} as Record<StoreName, number>
   const data = { ...file.data }
   if (file.version === 1) data.grammarBaselines ??= []
   if (file.version < 3) data.grammarReviewItems = []
+  if (file.version < 4) data.bookmarks = []
   for (const name of STORE_NAMES) {
     const rows = data[name]
     if (!Array.isArray(rows)) throw new Error(`备份缺少数据表：${name}`)
@@ -39,6 +42,19 @@ export function validateBackup(input: unknown): { file: BackupFile; counts: Reco
       if (typeof k !== 'string' || !k) throw new Error(`数据表 ${name} 第 ${i + 1} 条记录缺少主键 ${key}`)
     })
     counts[name] = rows.length
+  }
+  const bookmarkIds = new Set<string>()
+  for (const [i, row] of data.bookmarks.entries()) {
+    const bookmark = row as Bookmark
+    if ((bookmark.subject !== 'vocabulary' && bookmark.subject !== 'grammar') ||
+      typeof bookmark.itemId !== 'string' || !bookmark.itemId ||
+      bookmark.id !== bookmarkId(bookmark) || typeof bookmark.note !== 'string' ||
+      typeof bookmark.createdAt !== 'string' || !Number.isFinite(Date.parse(bookmark.createdAt)) ||
+      typeof bookmark.updatedAt !== 'string' || !Number.isFinite(Date.parse(bookmark.updatedAt))) {
+      throw new Error(`书签数据表第 ${i + 1} 条记录无效`)
+    }
+    if (bookmarkIds.has(bookmark.id)) throw new Error(`书签数据表第 ${i + 1} 条记录重复`)
+    bookmarkIds.add(bookmark.id)
   }
   return { file: { ...file, data } as BackupFile, counts }
 }

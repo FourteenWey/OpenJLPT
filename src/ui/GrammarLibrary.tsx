@@ -29,22 +29,21 @@ export function GrammarLibrary() {
     </div>
     {error && <p className="error" role="alert">{error}</p>}
     <p className="muted small">符合条件 {shown.length} 题</p>
-    {!shown.length ? <p className="muted">没有符合条件的语法题。</p> : <div className="table-wrap">
-      <table className="grammar-library-table">
-        <colgroup><col className="grammar-detail-level" /><col className="grammar-detail-pattern" /><col /></colgroup>
-        <thead><tr><th>级别</th><th>语法点</th><th>题目与解析</th></tr></thead>
-        <tbody>{shown.slice(0, limit).map((p) => {
+    {!shown.length ? <p className="muted">没有符合条件的语法题。</p> : <ul className="cards library-list">
+        {shown.slice(0, limit).map((p) => {
           const q = grammarQuestions.get(p.id)
-          return <tr key={p.id}><td>{p.level}</td><td lang="ja">{p.pattern}</td><td>
-            <p className="quiz-sentence" lang="ja">{q?.prompt}</p>
-            {q && <details><summary>查看选项、答案与解析</summary>
-              <ol lang="ja">{q.options.map((option) => <li key={option}>{option}</li>)}</ol>
-              <p className="quiz-sentence" lang="ja">{q.prompt.replace(QUIZ_BLANK, q.answer)}</p><p>{q.explanation}</p>
-            </details>}
-          </td></tr>
-        })}</tbody>
-      </table>
-    </div>}
+          return <li key={p.id}>
+            <details>
+              <summary><span className="badge">{p.level}</span> <strong lang="ja">{p.pattern}</strong></summary>
+              {q && <>
+                <p className="quiz-sentence" lang="ja">{q.prompt}</p>
+                <ol className="library-options" lang="ja">{q.options.map((option) => <li key={option}>{option}</li>)}</ol>
+                <p className="quiz-sentence" lang="ja">{q.prompt.replace(QUIZ_BLANK, q.answer)}</p><p>{q.explanation}</p>
+              </>}
+            </details>
+          </li>
+        })}
+    </ul>}
     {shown.length > limit && <button onClick={() => setLimit((v) => v + 30)}>再显示 30 题</button>}
   </section>
 }

@@ -2,7 +2,7 @@
 import { ensureGrammarReview } from './grammarMigration'
 
 export const DB_NAME = 'jlpt-vocab-scanner'
-export const DB_VERSION = 3
+export const DB_VERSION = 4
 
 export const STORE_KEYS = {
   wordlists: 'id',
@@ -13,6 +13,7 @@ export const STORE_KEYS = {
   grammarBaselines: 'wordId',
   reviewItems: 'wordId',
   grammarReviewItems: 'wordId',
+  bookmarks: 'id',
   settings: 'key',
 } as const
 

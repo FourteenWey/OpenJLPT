@@ -1,5 +1,7 @@
+import { useEffect, useRef } from 'react'
 import { CHOICE_KEYS, QUIZ_BLANK, type getGrammarQuestion } from '../lib/grammarQuiz'
 import type { Attempt } from '../types'
+import { BookmarkButton } from './BookmarkControls'
 
 interface Props {
   question: NonNullable<ReturnType<typeof getGrammarQuestion>>
@@ -14,6 +16,13 @@ interface Props {
 export function GrammarQuestionCard({ question, feedback, disabled, last, onChoose, onNext, onSpeak }: Props) {
   const [before, after] = question.prompt.split(QUIZ_BLANK)
   const correct = feedback?.grade === 'A'
+  const feedbackId = feedback?.id
+  const explanation = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (!feedbackId) return
+    explanation.current?.focus({ preventScroll: true })
+    explanation.current?.scrollIntoView?.({ block: 'nearest' })
+  }, [feedbackId])
   return (
     <section className="card grammar-quiz">
       <p className="grammar-instruction muted small">选出最适合填入空格的一项</p>
@@ -38,19 +47,18 @@ export function GrammarQuestionCard({ question, feedback, disabled, last, onChoo
       </div>
       {feedback && (
         <div className="grammar-feedback">
-          <div role="status">
+          <div ref={explanation} role="status" tabIndex={-1}>
             <strong className={`chip chip-${feedback.grade}`}>{correct ? '答对了' : '答错了'}</strong>
             <p lang="ja">{before}<mark>{question.answer}</mark>{after}</p>
             <p>{question.explanation}</p>
           </div>
-          <div className="row">
-            <button className="primary" disabled={disabled} onClick={onNext}>
-              {last ? '查看结果' : '下一题'} <kbd>Space</kbd>
-            </button>
-            <button disabled={disabled} onClick={onSpeak}>▶ 重播正确句 <kbd>R</kbd></button>
-          </div>
+          <BookmarkButton subject="grammar" itemId={feedback.wordId} label={question.pattern} disabled={disabled} />
         </div>
       )}
+      {feedback && <div className="study-actions grammar-actions">
+        <button disabled={disabled} onClick={onSpeak}>重播正确句 <kbd>R</kbd></button>
+        <button className="primary" disabled={disabled} onClick={onNext}>{last ? '查看结果' : '下一题'} <kbd>Space</kbd></button>
+      </div>}
     </section>
   )
 }

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import type { Attempt, Baseline, Grade, Session, StudySubject, Word } from '../types'
 import { dismissQuizFeedback, jumpTo, resumeSession, setSessionStatus } from '../db/sessions'
 import { rateBaseline, undoLastBaseline, type RateInput } from '../db/rating'
@@ -23,7 +23,9 @@ export function useScanSession(sessionId: string) {
   const [log, setLog] = useState<Attempt[]>([])
   const [revealed, setRevealed] = useState(false)
   const [busy, setBusy] = useState(false)
+  const saving = useRef(false)
   const [panel, setPanel] = useState<Panel>(null)
+  const [bookmarkDialogOpen, setBookmarkDialogOpen] = useState(false)
   const [msg, setMsg] = useState('')
 
   const refresh = useCallback(async (subject?: StudySubject) => {
@@ -58,13 +60,15 @@ export function useScanSession(sessionId: string) {
   const hasCard = !!(current || grammarPoint || question)
   const paused = session?.status === 'paused'
   const done = session?.status === 'completed' && !session.quizFeedback
-  const timer = useCardTimer(hasCard && !done && !session?.quizFeedback ? `${sessionId}:${currentId}` : null, paused || panel !== null || !!session?.quizFeedback)
+  const timer = useCardTimer(hasCard && !done && !session?.quizFeedback ? `${sessionId}:${currentId}` : null,
+    paused || panel !== null || bookmarkDialogOpen || !!session?.quizFeedback)
   const nextId = quiz && session ? session.order[session.cursor + (session.quizFeedback ? 0 : 1)] : undefined
   const speakGrammar = useGrammarAudio({ questionId: quiz && !done ? questionId : undefined, question, feedback,
     nextId, paused, blocked: !!panel || !!done, onError: setMsg })
 
   const act = async (fn: () => Promise<void>) => {
-    if (busy) return
+    if (saving.current) return
+    saving.current = true
     setBusy(true)
     setMsg('')
     try {
@@ -72,6 +76,7 @@ export function useScanSession(sessionId: string) {
     } catch (e) {
       setMsg(errText(e))
     } finally {
+      saving.current = false
       setBusy(false)
     }
   }
@@ -81,7 +86,7 @@ export function useScanSession(sessionId: string) {
     if (current && revealed && !paused && !done && !panel) speakWord(current).catch((e) => setMsg(errText(e)))
   }
   const reveal = () => {
-    if (hasCard && !revealed && !paused && !done && !panel) {
+    if (hasCard && !revealed && !paused && !done && !panel && !saving.current) {
       timer.markReveal()
       setRevealed(true)
       if (current) speakWordThenExample(current, session?.hint === 'example' ? current.example : undefined).catch((e) => setMsg(errText(e)))
@@ -151,10 +156,9 @@ export function useScanSession(sessionId: string) {
       KeyG: () => !paused && !done && !session?.quizFeedback && setPanel('jump'),
       KeyH: () => toggle('history'),
       'Shift+Slash': () => toggle('help'),
-      Escape: () => setPanel(null),
     },
     !!session,
   )
 
-  return { session, words, baselines, log, current, grammarPoint, question, answers, feedback, revealed, busy, panel, msg, paused, done, setPanel, reveal, speak, grade, choose, nextQuestion, undo, togglePause, jump }
+  return { session, words, baselines, log, current, grammarPoint, question, answers, feedback, revealed, busy, panel, msg, paused, done, setPanel, setBookmarkDialogOpen, reveal, speak, grade, choose, nextQuestion, undo, togglePause, jump }
 }

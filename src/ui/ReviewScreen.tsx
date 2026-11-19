@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import type { Baseline, Grade, ReviewItem, Word } from '../types'
 import { dueItems, listReviewItems, rateReview, undoLastReview } from '../db/review'
 import { getBaselineMap } from '../db/queries'
@@ -22,7 +22,9 @@ export function ReviewScreen() {
   const [data, setData] = useState<Loaded | null>(null)
   const [revealed, setRevealed] = useState(false)
   const [paused, setPaused] = useState(false)
+  const [bookmarkDialogOpen, setBookmarkDialogOpen] = useState(false)
   const [busy, setBusy] = useState(false)
+  const saving = useRef(false)
   const [msg, setMsg] = useState('')
   const [run, setRun] = useState({ A: 0, B: 0, C: 0 })
 
@@ -41,10 +43,14 @@ export function ReviewScreen() {
 
   const item = data?.queue[0]
   const word = item ? data?.words.get(item.wordId) : undefined
-  const timer = useCardTimer(item ? `${item.wordId}:${item.reviewCount}` : null, paused)
+  const timer = useCardTimer(item ? `${item.wordId}:${item.reviewCount}` : null, paused || bookmarkDialogOpen)
+  useEffect(() => {
+    if (item) window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [item?.wordId, item?.reviewCount])
 
   const act = async (fn: () => Promise<void>) => {
-    if (busy) return
+    if (saving.current) return
+    saving.current = true
     setBusy(true)
     setMsg('')
     try {
@@ -52,6 +58,7 @@ export function ReviewScreen() {
     } catch (e) {
       setMsg(errText(e))
     } finally {
+      saving.current = false
       setBusy(false)
     }
   }
@@ -59,7 +66,7 @@ export function ReviewScreen() {
     if (word && revealed && !paused) speakWord(word).catch((e) => setMsg(errText(e)))
   }
   const reveal = () => {
-    if (word && !revealed && !paused) {
+    if (word && !revealed && !paused && !saving.current) {
       timer.markReveal()
       setRevealed(true)
       speakWordThenExample(word, word.example).catch((e) => setMsg(errText(e)))
@@ -72,7 +79,7 @@ export function ReviewScreen() {
       await rateReview(db, { wordId: item.wordId, grade: g, ...timer.read() })
       setRun((r) => ({ ...r, [g]: r[g] + 1 }))
       setRevealed(false)
-      bump()
+      await load().finally(bump)
     })
   }
   const undo = () =>
@@ -81,7 +88,7 @@ export function ReviewScreen() {
       const r = await undoLastReview(db)
       if (!r.ok) return setMsg(r.message)
       setRevealed(false)
-      bump()
+      await load().finally(bump)
     })
 
   useHotkeys(
@@ -91,31 +98,39 @@ export function ReviewScreen() {
 
   if (!data) return <p className="muted pad">{msg || '加载中…'}</p>
   return (
-    <div className="scan">
+    <div className="scan" data-focused={item && word ? '' : undefined}>
       <header className="scan-head">
         <strong>错词复习</strong>
-        <span className="muted small">今日到期 {data.queue.length} 词 · 本轮 A {run.A} / B {run.B} / C {run.C}</span>
-        <span className="muted small">B、C 都算答错，会回到「当天」重测</span>
+        <span className="muted small">今日待复习 {data.queue.length} 词 · 本轮 A {run.A} / B {run.B} / C {run.C}</span>
       </header>
+      <div className="keyhints" role="group" aria-label="练习操作">
+        <button className="link" disabled={busy || paused} onClick={undo}><kbd>Z</kbd> 撤销复习</button>
+        <button className="link" disabled={busy || !item} onClick={() => setPaused((p) => !p)}><kbd>P</kbd> {paused ? '继续' : '暂停'}</button>
+      </div>
       {item && word ? (
         <>
           <Card
+            key={`${item.wordId}:${item.reviewCount}`}
             word={word}
             revealed={revealed}
             masked={paused}
             showExample
-            onSpeak={speak}            badge={`复测 · ${STAGE_LABELS[item.stage]} · 首评 ${data.base.get(item.wordId)?.grade ?? '—'}${item.lapses ? ` · 已答错 ${item.lapses} 次` : ''}`}
+            onSpeak={speak}
+            onReveal={reveal}
+            onResume={() => setPaused(false)}
+            onBookmarkDialogChange={setBookmarkDialogOpen}
+            disabled={busy}
+            badge={`复测 · ${STAGE_LABELS[item.stage]} · 首评 ${data.base.get(item.wordId)?.grade ?? '—'}${item.lapses ? ` · 已答错 ${item.lapses} 次` : ''}`}
           />
-          <GradeBar enabled={revealed && !paused && !busy} onGrade={grade} />
+          {revealed && !paused && <div className="study-actions"><GradeBar enabled={!busy} onGrade={grade} /></div>}
         </>
       ) : (
         <section className="card done">
-          <div className="card-word">今天没有到期的复习</div>
+          <h2 className="done-title">今天没有到期的复习</h2>
           {data.upcoming.length > 0 && <p className="muted">接下来：{data.upcoming.slice(0, 6).map(([d, n]) => `${d} · ${n} 词`).join('；')}</p>}
         </section>
       )}
       {msg && <p className="error" role="alert">{msg}</p>}
-      <footer className="keyhints"><span><kbd>Space</kbd> 显示答案</span><span><kbd>Z</kbd> 撤销</span><span><kbd>P</kbd> {paused ? '继续' : '暂停'}</span></footer>
     </div>
   )
 }

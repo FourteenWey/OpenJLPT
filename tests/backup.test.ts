@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { BACKUP_FORMAT, exportBackup, restoreBackup, validateBackup } from '../src/db/backup'
+import { getBookmark, listBookmarks, removeBookmark, saveBookmark } from '../src/db/bookmarks'
 import { BUILTIN_IDS, ensureBuiltin } from '../src/db/builtin'
 import { openDb, req } from '../src/db/db'
 import { getAllAttempts, getBaselineMap } from '../src/db/queries'
@@ -93,5 +94,50 @@ describe('JSON 备份与恢复', () => {
     noKey.data.baselines[0] = { grade: 'A' }
     await expect(restoreBackup(db, noKey)).rejects.toThrow('主键')
     expect((await getBaselineMap(db)).size).toBe(3)
+  })
+
+  it('升级 v3 数据库并保留原有学习记录', async () => {
+    const name = uniqueDbName()
+    const legacyRequest = indexedDB.open(name, 3)
+    legacyRequest.onupgradeneeded = () => {
+      legacyRequest.result.createObjectStore('baselines', { keyPath: 'wordId' }).put({ wordId: 'old-word', grade: 'A' })
+      legacyRequest.result.createObjectStore('attempts', { keyPath: 'id' }).createIndex('bySession', 'sessionId')
+    }
+    const legacy = await req(legacyRequest)
+    legacy.close()
+    const db = await openDb(name)
+    expect((await getBaselineMap(db)).get('old-word')?.grade).toBe('A')
+    expect(await listBookmarks(db, 'vocabulary')).toEqual([])
+    db.close()
+  })
+
+  it('书签去重并随 v4 备份恢复，v3 备份恢复为空书签列表', async () => {
+    const db = await freshDb()
+    const word = { subject: 'vocabulary', itemId: 'same-id' } as const
+    const grammar = { subject: 'grammar', itemId: 'same-id' } as const
+    const [saved] = await Promise.all([
+      saveBookmark(db, word, '记住第一行\n第二行', 'add'),
+      saveBookmark(db, word, '', 'add'),
+      saveBookmark(db, grammar, '猜对了', 'add'),
+    ])
+    expect(await listBookmarks(db, 'vocabulary')).toEqual([saved])
+    expect(await saveBookmark(db, word, '修改备注', 'edit')).toMatchObject({ createdAt: saved.createdAt })
+    const file = JSON.parse(JSON.stringify(await exportBackup(db)))
+    expect(file.version).toBe(4)
+    const other = await freshDb()
+    expect((await restoreBackup(other, file)).bookmarks).toBe(2)
+    expect(await getBookmark(other, word)).toMatchObject({ note: '修改备注' })
+    expect(await getBookmark(other, grammar)).toMatchObject({ note: '猜对了' })
+    const invalid = { ...file, data: { ...file.data, bookmarks: [...file.data.bookmarks, file.data.bookmarks[0]] } }
+    await expect(restoreBackup(other, invalid)).rejects.toThrow('重复')
+    expect((await listBookmarks(other, 'vocabulary')).length).toBe(1)
+
+    await removeBookmark(other, word)
+    await expect(saveBookmark(other, word, '已删除', 'edit')).rejects.toThrow('已移除')
+    const { bookmarks: _, ...oldData } = file.data
+    await restoreBackup(other, { ...file, version: 3, data: oldData })
+    expect(await listBookmarks(other, 'grammar')).toEqual([])
+    db.close()
+    other.close()
   })
 })

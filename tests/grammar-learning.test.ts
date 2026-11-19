@@ -132,7 +132,7 @@ describe('语法历史迁移和备份', () => {
     db.close()
   })
 
-  it('v1/v2 恢复补入历史错误，v3 恢复原样保留阶段和未离开的解析页', async () => {
+  it('v1/v2 恢复补入历史错误，v3/v4 恢复原样保留阶段和未离开的解析页', async () => {
     const db = await freshDb()
     const file = await exportBackup(db)
     file.data.attempts = [historical('wrong', 1), historical('right', 2, { grade: 'A' })]
@@ -154,6 +154,10 @@ describe('语法历史迁移和备份', () => {
     expect(await listReviewItems(target, 'grammar')).toEqual(await listReviewItems(db, 'grammar'))
     expect((await getGrammarFeedback(target))?.id).toBe(a.id)
     expect(await getAll<Attempt>(target, 'attempts')).toEqual(await getAll(db, 'attempts'))
+    const { bookmarks: _, ...oldData } = backup.data
+    await restoreBackup(target, { ...backup, version: 3, data: oldData })
+    expect(await listReviewItems(target, 'grammar')).toEqual(await listReviewItems(db, 'grammar'))
+    expect((await getGrammarFeedback(target))?.id).toBe(a.id)
     const broken = { ...backup, data: { ...backup.data, grammarReviewItems: undefined } }
     await expect(restoreBackup(target, broken)).rejects.toThrow('grammarReviewItems')
     expect((await getGrammarFeedback(target))?.id).toBe(a.id)

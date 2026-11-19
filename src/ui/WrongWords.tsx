@@ -43,6 +43,7 @@ export function WrongWords() {
 
   return (
     <div className="panel">
+      <h2>错词</h2>
       <div className="row">
         <label>词表
           <select value={list.id} onChange={(e) => setListId(e.target.value)}>
@@ -59,30 +60,23 @@ export function WrongWords() {
         <button onClick={exportAnki} disabled={!items.some((i) => i.status === 'active')}>导出待复习错词为 Anki CSV</button>
       </div>
       <p className="muted small">只有首评为 B/C 的词进入队列。「首评」永久保留，「最近评级」是最近一次作答（首评或复习）。</p>
-      {shown.length === 0 ? <p className="muted">没有符合条件的词。</p> : (
-        <div className="table-wrap">
-          <table>
-            <thead><tr><th>词</th><th>读音</th><th>释义</th><th>首评</th><th>最近评级</th><th>阶段</th><th>下次复习</th><th>答错</th></tr></thead>
-            <tbody>
-              {shown.map((i) => {
-                const w = words.get(i.wordId)
-                return (
-                  <tr key={i.wordId}>
-                    <td lang="ja">{w?.word}</td>
-                    <td lang="ja">{w?.reading}</td>
-                    <td>{w ? meaningText(w) : ''}</td>
-                    <td>{chip(base.get(i.wordId)?.grade)}</td>
-                    <td>{chip(i.lastGrade)}</td>
-                    <td>{i.status === 'graduated' ? '已毕业' : STAGE_LABELS[i.stage]}</td>
-                    <td>{i.status === 'graduated' ? '—' : i.dueDate}</td>
-                    <td>{i.lapses}</td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-        </div>
-      )}
+      {shown.length === 0 ? <p className="empty-note">没有符合条件的词。</p> : <ul className="cards wrong-word-list">
+        {shown.map((i) => {
+          const word = words.get(i.wordId)
+          return <li key={i.wordId}>
+            <details>
+              <summary><strong lang="ja">{word?.word ?? i.wordId}</strong> <span className="chip chip-B">{i.status === 'graduated' ? '已毕业' : STAGE_LABELS[i.stage]}</span></summary>
+              {word && <p><span lang="ja">{word.reading}</span> · {meaningText(word)}</p>}
+              <dl className="word-review-details">
+                <div><dt>首评</dt><dd>{chip(base.get(i.wordId)?.grade)}</dd></div>
+                <div><dt>最近评级</dt><dd>{chip(i.lastGrade)}</dd></div>
+                <div><dt>下次复习</dt><dd>{i.status === 'graduated' ? '—' : i.dueDate}</dd></div>
+                <div><dt>累计答错</dt><dd>{i.lapses} 次</dd></div>
+              </dl>
+            </details>
+          </li>
+        })}
+      </ul>}
     </div>
   )
 }

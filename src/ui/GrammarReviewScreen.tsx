@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { dueItems, listReviewItems, undoLastReview } from '../db/review'
 import { dismissGrammarFeedback, getGrammarFeedback, rateGrammarReview } from '../db/grammarReview'
 import { grammarById } from '../lib/grammar'
@@ -29,6 +29,9 @@ export function GrammarReviewScreen() {
   const feedback = data?.feedback
   const item = feedback?.prev ?? queue[0]
   const question = item ? getGrammarQuestion(item.wordId, parseInt(fnv1a(`${item.enteredAt}:${item.reviewCount}`), 16)) : undefined
+  useEffect(() => {
+    if (item && !feedback) window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [item?.wordId, item?.reviewCount, feedback])
   const timer = useCardTimer(item && !feedback ? `${item.wordId}:${item.reviewCount}` : null, paused || !!feedback)
   const speak = useGrammarAudio({ questionId: item?.wordId, question, feedback,
     nextId: queue[feedback ? 0 : 1]?.wordId, paused, blocked: false, onError: setMsg })
@@ -63,22 +66,20 @@ export function GrammarReviewScreen() {
     future.set(i.dueDate, (future.get(i.dueDate) ?? 0) + 1)
   }
   const missing = data.queue.filter((i) => !grammarQuestions.has(i.wordId)).length
-  return <div className="scan">
+  return <div className="scan" data-focused={paused || question ? '' : undefined}>
     <header className="scan-head"><strong>语法错题复习</strong><span className="muted small">今日待复习 {queue.length} 题 · 本轮答对 {run.correct} / 答错 {run.wrong}</span></header>
     <div className="row"><fieldset className="review-level-filter" disabled={busy || !!feedback}><GrammarLevelSelect value={level} onChange={(v) => { setLevel(v); setPaused(false) }} /></fieldset>
-      {item && <span className="muted small">复测 · {STAGE_LABELS[item.stage]} · {grammarById.get(item.wordId)?.level}</span>}</div>
-    <p className="muted small">到期答对推进阶段，答错当天再练；完成最后阶段后毕业。</p>
-    {paused ? <section className="card"><h2>已暂停</h2><button onClick={() => setPaused(false)}>继续 Space</button></section>
-      : question ? <GrammarQuestionCard question={question} feedback={feedback} disabled={busy} last={false} onChoose={choose} onNext={next} onSpeak={speak} />
-        : <section className="card done"><h2>今天没有到期的语法复习</h2>
+      {item && <span className="muted small row-note">复测 · {STAGE_LABELS[item.stage]} · {grammarById.get(item.wordId)?.level}</span>}</div>
+    <div className="keyhints" role="group" aria-label="练习操作">
+      <button className="link" disabled={busy || paused} onClick={() => void undo()}><kbd>Z</kbd> 撤销复习</button>
+      <button className="link" disabled={busy || !question} onClick={() => setPaused((p) => !p)}><kbd>P</kbd> {paused ? '继续' : '暂停'}</button>
+    </div>
+    {paused ? <section className="card"><h2>已暂停</h2><button className="primary" onClick={() => setPaused(false)}>继续练习 <kbd>Space</kbd></button></section>
+      : question ? <GrammarQuestionCard key={`${item?.wordId}:${item?.reviewCount}`} question={question} feedback={feedback} disabled={busy} last={false} onChoose={choose} onNext={next} onSpeak={speak} />
+        : <section className="card done"><h2 className="done-title">今天没有到期的语法复习</h2>
           {future.size > 0 && <p className="muted">接下来：{[...future].sort().slice(0, 6).map(([date, n]) => `${date} · ${n} 题`).join('；')}</p>}
         </section>}
     {missing > 0 && <p className="notice">{missing} 道历史题目在当前题库中不可用，已保留其学习记录并跳过复习。</p>}
     {(msg || error) && <p className="error" role="alert">{msg || error}</p>}
-    <footer className="keyhints">
-      <button className="link" disabled={busy || paused} onClick={() => void undo()}>Z 撤销复习</button>
-      <button className="link" disabled={busy} onClick={() => setPaused((p) => !p)}>P {paused ? '继续' : '暂停'}</button>
-      <span>A / B / C / D 选择 · Space 下一题 · R 重播</span>
-    </footer>
   </div>
 }

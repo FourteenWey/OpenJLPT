@@ -25,7 +25,7 @@ export function StatsScreen({ initialId }: { initialId?: string }) {
 
   if (!data) return <p className="muted pad">{error || '加载中…'}</p>
   const { sessions, s, base, attempts, items, words } = data
-  if (!s) return <p className="pad">还没有基线测试数据。先在「单词」页开始一次抽样或普查。</p>
+  if (!s) return <p className="empty-note">还没有基线测试数据。完成一次单词快筛后，就能在这里查看成绩。</p>
 
   const sum = summarizeBaseline(s, base)
   const retention = summarizeRetention(attempts)
@@ -40,7 +40,7 @@ export function StatsScreen({ initialId }: { initialId?: string }) {
   return (
     <div className="panel">
       <label className="form">
-        基线会话
+        单词练习
         <select value={s.id} onChange={(e) => setPicked(e.target.value)}>
           {sessions.map((x) => (
             <option key={x.id} value={x.id}>{x.wordlistName} · {SCOPE_LABEL[x.scope]} · {x.mode === 'sample' ? `抽样 ${x.sampleSize}` : '普查'} · {fmtTime(x.createdAt)}</option>
@@ -49,11 +49,7 @@ export function StatsScreen({ initialId }: { initialId?: string }) {
       </label>
 
       <section className="block">
-        <h2>首次基线{!s.scope.endsWith('-only') && <> <span className={`badge scope-${s.scope}`}>{scopeLabel}</span></>}</h2>
-        <p className="muted small">
-          样本框：{s.wordlistName}（{s.frameSize} 词，{FRAME_LABEL[s.frameType]}，指纹 {s.frameHash}）· {s.mode === 'sample' ? `随机抽样 n=${s.sampleSize}，种子 ${s.seed}` : `全量普查，随机顺序种子 ${s.seed}`} · 抽取于 {fmtTime(s.drawnAt)}
-          · 测试条件：{s.hint === 'example' ? '词形 + 例句提示（有例句的词；掌握率可能比只看词形偏高）' : '只显示词形'}
-        </p>
+        <h2>单词掌握情况{!s.scope.endsWith('-only') && <> <span className={`badge scope-${s.scope}`}>{scopeLabel}</span></>}</h2>
         <div className="stat-grid">
           <div><span>完成率</span><strong>{fmtPct(sum.completion)}</strong><small>{sum.rated} / {sum.sampleSize}</small></div>
           <div className="A"><span>A 掌握</span><strong>{sum.counts.A}</strong><small>{fmtPct(sum.rates.A)}</small></div>
@@ -65,16 +61,23 @@ export function StatsScreen({ initialId }: { initialId?: string }) {
           {sum.ciA && <> · 95% 置信区间 {fmtInterval(sum.ciA)}</>}
           {sum.ciC && <span className="muted"> · C 占比区间 {fmtInterval(sum.ciC)}</span>}
         </p>
-        <p className={sum.inference === 'none' ? 'notice' : 'muted small'}>{sum.inferenceNote}</p>
-        <p className="muted small">
-          耗时：本次有效用时 {fmtMs(sum.timing.sessionActiveMs)} · 本会话作答 {sum.timing.answered} 词，平均 {fmtMs(sum.timing.meanMs)}，中位 {fmtMs(sum.timing.medianMs)}
-        </p>
+        <details className="disclosure">
+          <summary>统计口径与练习设置</summary>
+          <p className="muted small">{sum.inferenceNote}</p>
+          <p className="muted small">
+            样本框：{s.wordlistName}（{s.frameSize} 词，{FRAME_LABEL[s.frameType]}，指纹 {s.frameHash}）· {s.mode === 'sample' ? `随机抽样 n=${s.sampleSize}，种子 ${s.seed}` : `全量普查，随机顺序种子 ${s.seed}`} · 抽取于 {fmtTime(s.drawnAt)}
+            · 测试条件：{s.hint === 'example' ? '词形 + 例句提示（有例句的词；掌握率可能比只看词形偏高）' : '只显示词形'}
+          </p>
+          <p className="muted small">本次有效用时 {fmtMs(sum.timing.sessionActiveMs)} · 本会话作答 {sum.timing.answered} 词，平均 {fmtMs(sum.timing.meanMs)}，中位 {fmtMs(sum.timing.medianMs)}</p>
+        </details>
       </section>
-
-      <DimTable title="按词性" rows={breakdown('pos', frameWords, base)} />
-      <DimTable title="假名词 / 汉字词" rows={breakdown('script', frameWords, base)} />
-      <DimTable title="复合动词（启发式，只含动词）" rows={breakdown('compound', frameWords, base)} note="复合动词按词形规则判断，没有形态分析器，只用假名书写的词可能漏判。" />
-      <DimTable title="按 JLPT 级别" rows={breakdown('level', frameWords, base)} note="累计词表请分级别看，不要把 N5/N4 的结果当作 N3 的结果。" />
+      {frameWords.length > 0 && <details className="block report-details">
+        <summary>查看分级与词汇分类</summary>
+        <DimTable title="按词性" rows={breakdown('pos', frameWords, base)} />
+        <DimTable title="假名词 / 汉字词" rows={breakdown('script', frameWords, base)} />
+        <DimTable title="复合动词（启发式，只含动词）" rows={breakdown('compound', frameWords, base)} note="复合动词按词形规则判断，没有形态分析器，只用假名书写的词可能漏判。" />
+        <DimTable title="按 JLPT 级别" rows={breakdown('level', frameWords, base)} note="累计词表请分级别看，不要把 N5/N4 的结果当作 N3 的结果。" />
+      </details>}
 
       <section className="block">
         <h2>复习后的记忆保持率</h2>
@@ -87,10 +90,13 @@ export function StatsScreen({ initialId }: { initialId?: string }) {
         )}
       </section>
 
-      <div className="row">
-        <button onClick={exportResults}>导出本会话结果 CSV</button>
-        <button onClick={async () => downloadText(`attempts-${fileStamp()}.csv`, attemptsCsv(attempts, new Map((await getAllWords(db)).map((w) => [w.id, w]))))}>导出全部作答日志 CSV</button>
-      </div>
+      <details className="block report-details">
+        <summary>导出学习记录</summary>
+        <div className="row">
+          <button onClick={exportResults}>导出本会话结果 CSV</button>
+          <button onClick={async () => downloadText(`attempts-${fileStamp()}.csv`, attemptsCsv(attempts, new Map((await getAllWords(db)).map((w) => [w.id, w]))))}>导出全部作答日志 CSV</button>
+        </div>
+      </details>
     </div>
   )
 }

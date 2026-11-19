@@ -22,7 +22,7 @@ set -u
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 RUN_DIR="$ROOT/.run"
 
-APP_HOST="${APP_HOST:-127.0.0.1}"
+APP_HOST="${APP_HOST:-localhost}"
 APP_PORT="${APP_PORT:-5173}"
 VV_HOST="${VOICEVOX_HOST:-127.0.0.1}"
 VV_PORT="${VOICEVOX_PORT:-50021}"

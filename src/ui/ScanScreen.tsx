@@ -1,10 +1,12 @@
-import type { MouseEvent } from 'react'
+import { useEffect } from 'react'
 import { summarizeBaseline } from '../lib/stats'
+import { BookmarkButton } from './BookmarkControls'
 import { Card, GradeBar } from './Card'
 import { GrammarQuestionCard } from './GrammarQuestionCard'
 import { HelpSheet, HistoryDrawer, JumpBox } from './ScanPanels'
 import { FRAME_LABEL, SCOPE_LABEL, fmtMs } from './format'
 import { useScanSession } from './useScanSession'
+import { StudyIcon } from './StudyIcon'
 
 interface Props {
   sessionId: string
@@ -12,33 +14,33 @@ interface Props {
   onStats: (sessionId: string) => void
 }
 
-/** 鼠标点击后移除焦点，避免之后按 Space 再次触发该按钮。 */
-const click = (fn: () => unknown) => (e: MouseEvent<HTMLElement>) => {
-  e.currentTarget.blur()
-  fn()
-}
-
 export function ScanScreen({ sessionId, onExit, onStats }: Props) {
   const s = useScanSession(sessionId)
   const { session } = s
+  const cardPosition = session?.quizFeedback?.wordId ?? session?.order[session.cursor]
+  const showingFeedback = !!session?.quizFeedback
+  useEffect(() => {
+    if (cardPosition && !showingFeedback) window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [cardPosition, showingFeedback])
   if (!session) return <p className="muted pad" role="status">{s.msg || '加载中…'}</p>
 
   const grammar = session.subject === 'grammar'
   const quiz = session.grammarQuiz
-  const gradeBar = <GradeBar grammar={grammar} enabled={s.revealed && !s.paused && !s.busy && !s.panel} onGrade={s.grade} />
+  const gradeBar = s.revealed && !s.paused && <div className="study-actions">
+    <GradeBar grammar={grammar} enabled={!s.busy && !s.panel} onGrade={s.grade} />
+  </div>
   const sum = summarizeBaseline(session, s.baselines)
   const rated = quiz ? s.answers.length : sum.rated
   const correct = s.answers.filter((a) => a.grade === 'A').length
   const position = session.quizFeedback ? session.order.indexOf(session.quizFeedback.wordId) : session.cursor
   const mode = (session.mode === 'sample' ? `随机抽样 n=${session.sampleSize} · 种子 ${session.seed}` : `${quiz ? '全部题目' : '全量普查'} · 种子 ${session.seed}`) + (session.hint === 'example' ? ' · 带例句提示' : '')
   return (
-    <div className="scan">
+    <div className="scan" data-focused={!s.done ? '' : undefined}>
       <header className="scan-head">
-        <button className="link" tabIndex={-1} onClick={click(onExit)}>← 会话列表</button>
+        <button className="link back-link" disabled={s.busy} onClick={onExit}><StudyIcon name="back" /> 练习设置</button>
         <div className="scan-title">
           <strong>{session.wordlistName}</strong>
           {!session.scope.endsWith('-only') && <span className={`badge scope-${session.scope}`}>{SCOPE_LABEL[session.scope]}</span>}
-          <span className="muted small">{mode} · {quiz ? '单选题' : grammar ? '应用语法库' : FRAME_LABEL[session.frameType]}</span>
         </div>
         <div className="tally" aria-label="当前计数">
           {quiz ? <>
@@ -51,17 +53,27 @@ export function ScanScreen({ sessionId, onExit, onStats }: Props) {
           </>}
         </div>
       </header>
+      <div className="session-status">
+        <span>{quiz ? '已答' : '已评'} {rated} / {session.sampleSize}{!s.done && ` · 当前第 ${position + 1} ${quiz ? '题' : '位'}`}</span>
+        <details>
+          <summary>练习详情</summary>
+          <p>{mode} · {quiz ? '单选题' : grammar ? '应用语法库' : FRAME_LABEL[session.frameType]}</p>
+          <p>有效用时 {fmtMs(session.activeMs)}{session.preRated > 0 && ` · ${session.preRated} ${grammar ? '个语法点' : '词'}沿用既有首评`}</p>
+        </details>
+      </div>
       <div className="progress" role="progressbar" aria-label={quiz ? '答题进度' : '评级进度'} aria-valuenow={rated} aria-valuemax={session.sampleSize}>
         <div style={{ width: `${rated / session.sampleSize * 100}%` }} />
       </div>
-      <p className="muted small center">
-        {quiz ? '已答' : '已评'} {rated} / {session.sampleSize}{!s.done && ` · 当前第 ${position + 1} ${quiz ? '题' : '位'}`} · 有效用时 {fmtMs(session.activeMs)}
-        {session.preRated > 0 && ` · 其中 ${session.preRated} ${grammar ? '个语法点' : '词'}沿用既有首评`}
-      </p>
-
+      <div className="keyhints" role="group" aria-label="练习操作">
+        <button className="link" disabled={s.busy || s.paused} onClick={s.undo}><kbd>Z</kbd> 撤销</button>
+        <button className="link" disabled={s.busy || s.done || !!session.quizFeedback} onClick={s.togglePause}><kbd>P</kbd> {s.paused ? '继续' : '暂停'}</button>
+        <button className="link" disabled={s.busy || s.paused || s.done || !!session.quizFeedback} onClick={() => s.setPanel('jump')}><kbd>G</kbd> 跳转</button>
+        <button className="link" onClick={() => s.setPanel('history')}><kbd>H</kbd> 历史</button>
+        <button className="link keyboard-help" onClick={() => s.setPanel('help')}><kbd>?</kbd> 快捷键</button>
+      </div>
       {s.done ? (
         <section className="card done">
-          <div className="card-word">本次测试完成</div>
+          <h1 className="done-title">本次测试完成</h1>
           <p className="muted">{quiz ? `答对 ${correct} / ${rated} 题` : `A ${sum.counts.A} · B ${sum.counts.B} · C ${sum.counts.C}`}</p>
           <div className="row center">
             <button className="primary" onClick={() => onStats(session.id)}>{quiz ? '查看答题明细' : grammar ? '查看掌握报告' : '查看统计'}</button>
@@ -71,7 +83,7 @@ export function ScanScreen({ sessionId, onExit, onStats }: Props) {
       ) : s.question ? (
         s.paused ? <section className="card" aria-live="polite">
           <div className="card-word">已暂停</div>
-          <button onClick={click(s.togglePause)}>继续 <kbd>Space</kbd></button>
+          <button className="primary" onClick={s.togglePause}>继续练习 <kbd>Space</kbd></button>
         </section> : <GrammarQuestionCard
           key={session.quizFeedback?.wordId ?? session.order[session.cursor]}
           question={s.question}
@@ -87,20 +99,24 @@ export function ScanScreen({ sessionId, onExit, onStats }: Props) {
           <section className="card" aria-live="polite">
             {s.paused ? <>
               <div className="card-word">已暂停</div>
-              <button onClick={click(s.togglePause)}>继续 <kbd>Space</kbd></button>
+              <button className="primary" onClick={s.togglePause}>继续练习 <kbd>Space</kbd></button>
             </> : <>
               <p className="grammar-prompt" lang="ja">{s.grammarPoint.prompt}</p>
               {s.revealed ? <div className="card-answer">
                 <span className="muted small">目标语法</span>
                 <div className="card-reading grammar-pattern" lang="ja">{s.grammarPoint.pattern}</div>
-              </div> : <button onClick={click(s.reveal)} disabled={!!s.panel}>显示目标语法 <kbd>Space</kbd></button>}
+                <BookmarkButton subject="grammar" itemId={s.grammarPoint.id} label={s.grammarPoint.pattern}
+                  disabled={s.busy || !!s.panel} onDialogChange={s.setBookmarkDialogOpen} />
+              </div> : <div className="study-actions reveal-actions"><button className="primary" onClick={s.reveal} disabled={!!s.panel}>显示目标语法 <kbd>Space</kbd></button></div>}
             </>}
           </section>
           {gradeBar}
         </>
       ) : s.current ? (
         <>
-          <Card word={s.current} revealed={s.revealed} masked={s.paused} showExample={session.hint === 'example'} onSpeak={s.speak} />
+          <Card key={s.current.id} word={s.current} revealed={s.revealed} masked={s.paused} showExample={session.hint === 'example'}
+            onSpeak={s.speak} onReveal={s.reveal} onResume={s.togglePause} disabled={s.busy || !!s.panel}
+            onBookmarkDialogChange={s.setBookmarkDialogOpen} />
           {gradeBar}
         </>
       ) : (
@@ -108,13 +124,6 @@ export function ScanScreen({ sessionId, onExit, onStats }: Props) {
       )}
 
       {s.msg && <p className="error" role="alert">{s.msg}</p>}
-      <footer className="keyhints">
-        <button className="link" tabIndex={-1} onClick={click(s.undo)}><kbd>Z</kbd> 撤销</button>
-        <button className="link" disabled={quiz && (s.done || !!session.quizFeedback)} tabIndex={-1} onClick={click(s.togglePause)}><kbd>P</kbd> {s.paused ? '继续' : '暂停'}</button>
-        <button className="link" disabled={quiz && (s.paused || s.done || !!session.quizFeedback)} tabIndex={-1} onClick={click(() => s.setPanel('jump'))}><kbd>G</kbd> 跳转</button>
-        <button className="link" tabIndex={-1} onClick={click(() => s.setPanel(s.panel === 'history' ? null : 'history'))}><kbd>H</kbd> 历史</button>
-        <button className="link" tabIndex={-1} onClick={click(() => s.setPanel(s.panel === 'help' ? null : 'help'))}><kbd>?</kbd> 帮助</button>
-      </footer>
 
       {s.panel === 'history' && <HistoryDrawer log={s.log} words={s.words} onClose={() => s.setPanel(null)} />}
       {s.panel === 'jump' && <JumpBox total={session.order.length} current={session.cursor + 1} grammar={grammar} quiz={quiz} onJump={s.jump} onClose={() => s.setPanel(null)} />}

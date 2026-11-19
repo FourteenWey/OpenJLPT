@@ -4,6 +4,19 @@
 export type Grade = 'A' | 'B' | 'C'
 
 export type StudySubject = 'vocabulary' | 'grammar'
+
+export interface BookmarkTarget {
+  subject: StudySubject
+  itemId: string
+}
+
+export interface Bookmark extends BookmarkTarget {
+  id: string
+  note: string
+  createdAt: string
+  updatedAt: string
+}
+
 export type JlptLevel = `N${1 | 2 | 3 | 4 | 5}`
 
 /** 每个级别有独立样本框，累计词表和自定义词表也各自统计。 */
